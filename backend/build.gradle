@@ -55,7 +55,7 @@ dependencies {
   // Fleet Engine Auth Library and its dependencies
   implementation 'com.google.maps:fleetengine-auth:1.8.0'
   implementation 'com.google.guava:guava:1.55.0'
-  implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
+  implementation 'com.google.auth:google-auth-library-oauth2-http:1.6.0'
 
   implementation 'com.auth0:java-jwt:3.10.2'
   implementation 'com.google.inject:guice:4.2.2'
