@@ -1,0 +1,12 @@
+.shipments-table .mdc-data-table__header-cell {
+  color: #80868B;
+}
+
+.shipments-table-container.mdc-data-table {
+  border: none;
+  margin-bottom: 56px;
+}
+
+.shipment-details-table {
+  font-size: 75%;
+}

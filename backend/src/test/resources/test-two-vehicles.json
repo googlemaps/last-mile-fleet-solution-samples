@@ -1,0 +1,80 @@
+{
+  "manifests": [
+    {
+      "vehicle": {
+        "vehicle_id": "vehicle_1",
+        "start_location": {
+          "lat": 37.4231623,
+          "lng": -122.0925322,
+          "description": "GWC3, 1505 Salado, Mountain View, CA 94043"
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "vehicle_1_task_1",
+          "tracking_id": "vehicle_1_tracking_1",
+          "planned_waypoint": {
+            "lat": 37.41937,
+            "lng": -122.08882,
+            "description": "LMK6-A, 1947 Landings Drive, Mountain View, CA 94043"
+          },
+          "task_type": "DELIVERY",
+          "duration_seconds": 60,
+          "planned_completion_time": "2021-10-21T23:25:30.826445-07:00",
+          "planned_completion_time_range_seconds": 3600,
+          "contact_name": "Wolfgang Amadeus Mozart"
+        }
+      ],
+      "stops": [
+        {
+          "stop_id": "vehicle_1_stop_1",
+          "planned_waypoint": {
+            "lat": 37.41914,
+            "lng": -122.08845,
+            "description": "Google Landmark Bldgs"
+          },
+          "tasks": ["vehicle_1_task_1"]
+        }
+      ]
+    },
+    {
+      "vehicle": {
+        "vehicle_id": "vehicle_2",
+        "start_location": {
+          "lat": 37.4231623,
+          "lng": -122.0925322,
+          "description": "GWC3, 1505 Salado, Mountain View, CA 94043"
+        }
+      },
+      "tasks": [
+        {
+          "task_id": "vehicle_2_task_1",
+          "tracking_id": "vehicle_2_tracking_1",
+          "planned_waypoint": {
+            "lat": 37.41975,
+            "lng": -122.08195,
+            "description": "B45, 1585 Charleston Rd., Mountain View, CA 94043"
+          },
+          "task_type": "PICKUP",
+          "duration_seconds": 60,
+          "planned_completion_time": "2021-10-22T02:25:30.826445-07:00",
+          "planned_completion_time_range_seconds": 3600,
+          "contact_name": "Frédéric Chopin"
+        }
+
+      ],
+      "stops": [
+        {
+          "stop_id": "vehicle_2_stop_1",
+          "planned_waypoint": {
+            "lat": 37.41954,
+            "lng": -122.08173,
+            "description": "Google B46"
+          },
+          "tasks": ["vehicle_2_task_1"]
+        }
+      ]
+    }
+  ],
+  "description": ""
+}

@@ -1,0 +1,257 @@
+<div class="modal" id="options-modal">
+  <div class="modal__content">
+    <div class="option-title">
+      Options
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Polling interval <span id="polling-interval-ms__min-val">(Minimum value: 5000ms)</span>
+      </p>
+
+      <label>
+        <input type="number" id="polling-interval-ms" min="5000" />
+        <span>ms</span>
+      </label>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Polyline visibility
+      </p>
+      <label>
+        <input type="checkbox" id="show-anticipated-route-polyline" />
+        <span>Show anticipated route polyline</span>
+      </label>
+      <br/>
+      <label>
+        <input type="checkbox" id="show-taken-route-polyline" />
+        <span>Show taken route polyline</span>
+      </label>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Marker visibility
+      </p>
+      <label>
+        <input type="checkbox" id="show-tasks" />
+        <span>Show tasks</span>
+      </label>
+      <br/>
+      <label>
+        <input type="checkbox" id="show-outcome-locations" />
+        <span>Show task outcome locations</span>
+      </label>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Vehicle icon
+      </p>
+      <select id="vehicle-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="vehicle-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+        <option value="defaultDestinationIcon"
+                id="vehicle-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="vehicle-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="vehicle-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+                <option value="defaultUnsuccessfulTaskIcon"
+                id="vehicle-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="vehicle-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="vehicle-icon-option-nemo">Nemo</option>
+        <option value="tums" id="vehicle-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Destination icon
+      </p>
+      <select id="destination-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="destination-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+        <option value="defaultDestinationIcon"
+                id="destination-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="destination-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="destination-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+                <option value="defaultUnsuccessfulTaskIcon"
+                id="destination-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="destination-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="destination-icon-option-nemo">Nemo</option>
+        <option value="tums" id="destination-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Waypoint icon
+      </p>
+      <select id="waypoint-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="waypoint-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+          <option value="defaultDestinationIcon"
+                id="waypoint-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="waypoint-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="waypoint-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+                <option value="defaultUnsuccessfulTaskIcon"
+                id="waypoint-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="waypoint-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="waypoint-icon-option-nemo">Nemo</option>
+        <option value="tums" id="waypoint-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Successful task icon
+      </p>
+      <select id="successful-task-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="successful-task-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+        <option value="defaultDestinationIcon"
+                id="successful-task-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="successful-task-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="successful-task-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+        <option value="defaultUnsuccessfulTaskIcon"
+                id="successful-task-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="successful-task-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="successful-task-icon-option-nemo">Nemo</option>
+        <option value="tums" id="successful-task-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Unsuccessful task icon
+      </p>
+      <select id="unsuccessful-task-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="unsuccessful-task-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+        <option value="defaultDestinationIcon"
+                id="unsuccessful-task-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="unsuccessful-task-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="unsuccessful-task-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+                <option value="defaultUnsuccessfulTaskIcon"
+                id="unsuccessful-task-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="unsuccessful-task-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="unsuccessful-task-icon-option-nemo">Nemo</option>
+        <option value="tums" id="unsuccessful-task-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-group">
+      <p class="option-group__label">
+        Task Outcome icon
+      </p>
+      <select id="task-outcome-icon-selector">
+        <option value="defaultVehicleIcon"
+                id="task-outcome-icon-option-defaultVehicleIcon">
+          Default vehicle icon
+        </option>
+        <option value="defaultDestinationIcon"
+                id="task-outcome-icon-option-defaultDestinationIcon">
+          Default destination icon
+        </option>
+        <option value="defaultWaypointIcon"
+                id="task-outcome-icon-option-defaultWaypointIcon">
+          Default waypoint icon
+        </option>
+        <option value="defaultSuccessfulTaskIcon"
+                id="task-outcome-icon-option-defaultSuccessfulTaskIcon">
+          Default successful task icon
+        </option>
+        <option value="defaultUnsuccessfulTaskIcon"
+                id="task-outcome-icon-option-defaultUnsuccessfulTaskIcon">
+          Default unsuccessful task icon
+        </option>
+        <option value="defaultTaskOutcomeIcon"
+                id="task-outcome-icon-option-defaultTaskOutcomeIcon">
+          Default task outcome icon
+        </option>
+        <option value="nemo" id="task-outcome-icon-option-nemo">Nemo</option>
+        <option value="tums" id="task-outcome-icon-option-tums">Tums</option>
+      </select>
+    </div>
+
+    <div class="option-modal__footer">
+      <button id="options-modal__cancel-button" class="secondary">Cancel</button>
+      <button id="options-modal__confirm-button">Confirm</button>
+    </div>
+  </div>
+</div>

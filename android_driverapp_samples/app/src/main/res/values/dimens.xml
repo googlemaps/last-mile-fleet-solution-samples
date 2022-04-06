@@ -1,0 +1,21 @@
+<resources>
+  <!-- Default screen margins, per the Android Design guidelines. -->
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+  <dimen name="activity_vertical_margin">16dp</dimen>
+  <dimen name="nav_header_vertical_spacing">8dp</dimen>
+  <dimen name="nav_header_height">176dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
+  <dimen name="text_view_vertical_padding">32dp</dimen>
+  <dimen name="text_view_horizontal_padding">16dp</dimen>
+  <dimen name="map_view_pin_text_size">14dp</dimen>
+
+  <dimen name="fragment_horizontal_margin">24dp</dimen>
+  <dimen name="fragment_header_height">56dp</dimen>
+  <dimen name="fragment_header_text_size">18sp</dimen>
+  <dimen name="setting_view_height">56dp</dimen>
+  <dimen name="itinerary_map_item_width">288dp</dimen>
+  <dimen name="itinerary_map_item_height">108dp</dimen>
+  <dimen name="itinerary_map_item_corner_radius">8dp</dimen>
+  <dimen name="itinerary_map_item_padding">12dp</dimen>
+  <dimen name="itinerary_map_item_right_margin">12dp</dimen>
+</resources>
