@@ -22,7 +22,7 @@ buildscript {    // Configuration for building
 }
 
 plugins {
-  id 'com.github.sherter.google-java-format' version '0.8'
+  id 'com.github.sherter.google-java-format' version '0.9'
   id 'com.google.cloud.artifactregistry.gradle-plugin' version '2.1.5'
 }
 
