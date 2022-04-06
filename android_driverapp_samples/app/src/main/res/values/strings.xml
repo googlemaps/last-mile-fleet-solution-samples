@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Google LLC
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         https://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+  <string name="app_name">Delivery Driver</string>
+
+  <!-- Bottom navigation menu item names -->
+  <string name="list">List</string>
+  <string name="map">Map</string>
+  <string name="settings">Settings</string>
+
+  <!-- Mark pickup/delivered -->
+  <string name="mark_delivered">Mark delivered</string>
+  <string name="delivered">Delivered</string>
+  <string name="mark_all_delivered">Mark all delivered</string>
+  <string name="could_not_deliver">Couldn\'t deliver</string>
+  <string name="mark_picked_up">Mark picked up</string>
+  <string name="picked_up">Picked up</string>
+  <string name="mark_all_picked_up">Mark all pick up</string>
+  <string name="could_not_pick_up">Couldn\'t pick up</string>
+
+  <!-- Mark task outcome -->
+  <string name="completed">Completed</string>
+  <string name="attempted">Attempted</string>
+  <string name="complete">Complete</string>
+
+  <!-- Toast messages -->
+  <string name="invalid_maps_api_key">Invalid Maps API key: [%s]. Check AndroidManifest.xml.</string>
+  <string name="stops_list_update_done">Stops list updated!</string>
+  <string name="stops_list_update_fail">Failed to update stops list!</string>
+  <plurals name="task_outcome_updates_sent">
+    <item quantity="one">Sent task outcome update for %d task!</item>
+    <item quantity="other">Sent task outcome updates for %d tasks!</item>
+  </plurals>
+  <plurals name="task_outcome_update_failed">
+    <item quantity="one">Failed to update task outcome for %d task!</item>
+    <item quantity="other">Failed to update task outcomes for %d tasks!</item>
+  </plurals>
+  <string name="task_outcomes_update_done">Task outcomes updated!</string>
+  <string name="backend_manifest_loaded">Manifest loaded!</string>
+  <string name="backend_manifest_404">Backend manifest endpoint returned 404.\nEnsure that a manifest was loaded.</string>
+  <string name="backend_manifest_error">Could not fetch manifest from backend:\n%s</string>
+  <string name="stop_list_reorder_sent">Sent new stop order!</string>
+  <string name="stop_list_reorder_updated">Stop order updated!</string>
+  <string name="stop_list_reorder_failed">Failed to update stop order!</string>
+
+  <!-- Navigation bottom bar strings -->
+  <plurals name="nav_bottom_pick_ups">
+    <item quantity="one">%d pick up</item>
+    <item quantity="other">%d pick ups</item>
+  </plurals>
+  <plurals name="nav_bottom_deliveries">
+    <item quantity="one">%d delivery</item>
+    <item quantity="other">%d deliveries</item>
+  </plurals>
+
+  <!-- Settings Options -->
+  <string name="location_tracking">Location Tracking</string>
+  <string name="simulation">Simulation</string>
+  <string name="multi_destinations">Multi Destinations</string>
+  <string name="provider_id">Provider ID</string>
+  <string name="provider_id_hint">Cloud project ID</string>
+  <string name="backend_url">Backend URL</string>
+  <string name="backend_url_hint">https://...</string>
+  <string name="client_id">Client ID</string>
+  <string name="client_id_hint">Unique ID for this client</string>
+
+  <string name="your_itinerary">Your itinerary</string>
+  <string name="delivery_details">Delivery Details</string>
+  <string name="details">Details</string>
+  <string name="delivery">Delivery</string>
+  <string name="deliveries">Deliveries</string>
+  <string name="pick_up">Pick up</string>
+  <string name="pick_ups">Pick ups</string>
+  <string name="arrival_message">You\'ve arrived at your destination</string>
+
+  <!-- Action of opening the drawer  [CHAR_LIMIT=30]-->
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+  <!-- Action of closing the drawer  [CHAR_LIMIT=30]-->
+  <string name="navigation_drawer_close">Close navigation drawer</string>
+  <!-- Header of the navigation panel  [CHAR_LIMIT=30]-->
+  <string name="nav_header_title">Delivery driver test app</string>
+  <!-- Description of navigation header  [CHAR_LIMIT=20]-->
+  <string name="nav_header_desc">Navigation header</string>
+  <!-- Settings menu option [CHAR_LIMIT=20]-->
+  <string name="action_settings">Settings</string>
+  <!-- Version info menu option [CHAR_LIMIT=20] -->
+  <string name="action_version">Version info</string>
+
+  <!-- Home fragment title on navigation menu  [CHAR_LIMIT=20]-->
+  <string name="menu_home">Home</string>
+  <!-- Itinerary fragment title on navigation menu  [CHAR_LIMIT=20]-->
+  <string name="menu_itinerary">Itinerary</string>
+  <!-- Parser fragment title on navigation menu  [CHAR_LIMIT=20]-->
+  <string name="menu_parser">Parser</string>
+
+  <!-- Location permission -->
+  <!-- Location permission warning dialog title  [CHAR_LIMIT=20]-->
+  <string name="permission_warning_title">Location permission</string>
+  <!-- Location permission warning dialog message  [CHAR_LIMIT=60]-->
+  <string name="permission_warning_message">This app needs location permission grants to work properly.</string>
+  <!-- Location permission warning dialog button label  [CHAR_LIMIT=20]-->
+  <string name="permission_warning_button">Ok</string>
+
+  <!-- Vehicle creation -->
+  <!-- Vehicle creation warning dialog title  [CHAR_LIMIT=30]-->
+  <string name="vehicle_warning_title">Vehicle already exists</string>
+  <!-- Vehicle creation warning dialog message  [CHAR_LIMIT=60]-->
+  <string name="vehicle_warning_message">This vehicle id already exists on Spanner.</string>
+  <!-- Vehicle creation warning dialog button label  [CHAR_LIMIT=20]-->
+  <string name="vehicle_warning_button">Ok</string>
+
+
+  <!-- Messages -->
+
+  <!-- Shown when JSON file load fails [CHAR_LIMIT=30] -->
+  <string name="error_json_load">Error loading JSON</string>
+  <!-- Shown when JSON file load succeeds [CHAR_LIMIT=30] -->
+  <string name="info_json_load">Loaded JSON</string>
+  <!-- Shown when update task fails [CHAR_LIMIT=30] -->
+  <string name="error_task_update">Update task failed</string>
+  <!-- Shown when update task succeeds [CHAR_LIMIT=30] -->
+  <string name="info_task_update">Task updated</string>
+
+  <!-- Info panel -->
+
+  <!-- Simulation switch label [CHAR_LIMIT=80]-->
+  <string name="simulation_label">Simulation</string>
+  <!-- Location tracking switch label [CHAR_LIMIT=80]-->
+  <string name="tracking_label">Location tracking</string>
+  <!-- Vehicle stop information shown on panel [CHAR_LIMIT=80]-->
+  <string name="stop_info">Next stop: %1$s - Tasks: %2$d</string>
+  <!-- Vehicle id information shown on panel [CHAR_LIMIT=80]-->
+  <string name="vehicle_info">Vehicle: %1$s</string>
+
+  <!-- Task info panel -->
+
+  <!-- Task number label [CHAR_LIMIT=80] -->
+  <string name="task_number">Task %1$d of %2$d</string>
+  <!-- Task name label [CHAR_LIMIT=80] -->
+  <string name="task_name">Task: %1$s</string>
+  <!-- Task type label [CHAR_LIMIT=80] -->
+  <string name="task_type">Type: %1$s</string>
+  <!-- Task duration label [CHAR_LIMIT=80] -->
+  <string name="task_duration">Duration: %1$d</string>
+  <!-- Task outcome label [CHAR_LIMIT=80] -->
+  <string name="task_outcome">Outcome: %1$s</string>
+  <!-- Task location label [CHAR_LIMIT=80] -->
+  <string name="task_location">Location: %1$s</string>
+  <!-- Go off-route button [CHAR_LIMIT=80] -->
+  <string name="off_route_button">Go off-route</string>
+
+  <!-- Action button -->
+
+  <!-- Create delivery label [CHAR_LIMIT=80] -->
+  <string name="create_delivery">Create delivery</string>
+  <!-- Enroute state label [CHAR_LIMIT=80]-->
+  <string name="stop_new">Enroute to stop</string>
+  <!-- Arrived state label [CHAR_LIMIT=80]-->
+  <string name="stop_enroute">Arrived at stop</string>
+  <!-- Completed stop state label [CHAR_LIMIT=80]-->
+  <string name="stop_arrived">Completed stop</string>
+  <!-- Completed state label [CHAR_LIMIT=80]-->
+  <string name="stop_completed">Completed</string>
+  <!-- Unspecificed state label[CHAR_LIMIT=80]-->
+  <string name="stop_unspecified">No action available</string>
+
+  <!-- Move stop up button [CHAR_LIMIT=80] -->
+  <string name="stop_down">Down</string>
+  <!-- Move stop down button [CHAR_LIMIT=80] -->
+  <string name="stop_up">Up</string>
+  <!-- Delete stop button [CHAR_LIMIT=80] -->
+  <string name="stop_delete">Delete</string>
+  <!-- Add stop button [CHAR_LIMIT=80] -->
+  <string name="stop_add">Add stop</string>
+
+  <!-- Task buttons -->
+
+  <!-- Start label [CHAR_LIMIT=80] -->
+  <string name="task_status_success">Success</string>
+  <!-- Complete label [CHAR_LIMIT=80] -->
+  <string name="task_status_fail">Fail</string>
+  <!-- Next label [CHAR_LIMIT=80] -->
+  <string name="task_next">Next</string>
+  <!-- Previous label [CHAR_LIMIT=80] -->
+  <string name="task_previous">Previous</string>
+
+  <!-- Task view button [CHAR_LIMIT=80] -->
+  <string name="task_view">View</string>
+  <!-- Load tasks button label [CHAR_LIMIT=80] -->
+  <string name="load_tasks">Load tasks</string>
+
+  <!-- Parsing log -->
+
+  <!-- Log type label [CHAR_LIMIT=80] -->
+  <string name="log_type_label">Type</string>
+  <!-- Success label [CHAR_LIMIT=80] -->
+  <string name="log_success_label">Success</string>
+  <!-- Log extra message label [CHAR_LIMIT=80] -->
+  <string name="log_extra_msg_label">Details</string>
+
+  <!-- Default stop latitude [CHAR_LIMIT=80] -->
+  <string name="default_stop_lat">37.426638</string>
+  <!-- Default stop longitude [CHAR_LIMIT=80] -->
+  <string name="default_stop_lng">-122.080472</string>
+  <!-- Default task latitude [CHAR_LIMIT=80] -->
+  <string name="default_task_lat">37.427075</string>
+  <!-- Default task longitude [CHAR_LIMIT=80] -->
+  <string name="default_task_lng">-122.079815</string>
+  <!-- Default task duration [CHAR_LIMIT=80] -->
+  <string name="default_task_duration">300</string>
+
+  <!-- Preferences -->
+
+  <!-- Use multi-destinations label [CHAR_LIMIT=80] -->
+  <string name="use_multidestinations_label">Use multi-destinations</string>
+  <!-- Use untrusted driver role label [CHAR_LIMIT=80] -->
+  <string name="use_untrusted_label">Use untrusted driver role</string>
+  <!-- Use DriverSDK label [CHAR_LIMIT=80] -->
+  <string name="use_sdk_label">Force using DriverSDK API</string>
+
+</resources>

@@ -1,0 +1,11 @@
+/**
+ * This file is used to generate AllTests.java used for internal integration
+ * tests. Do not check into GitHub.
+ */
+package com.example.backend;
+
+import org.junit.runner.RunWith;
+import com.google.testing.junit.junit4.suites.ClasspathSuite;
+
+@RunWith(ClasspathSuite.class)
+final class AllTests {}

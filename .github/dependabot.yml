@@ -1,0 +1,12 @@
+version: 2
+updates:
+
+  - package-ecosystem: "gradle"
+    directory: "/android_driverapp_samples/app"
+    schedule:
+      interval: "weekly"
+
+  - package-ecosystem: "gradle"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"

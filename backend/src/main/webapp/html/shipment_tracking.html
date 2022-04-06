@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="./main.css">
+  <link rel="stylesheet" href="./shipment_tracking.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons">
+  <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
+  <title>Shipment Tracking</title>
+</head>
+
+<body>
+  <!-- header bar -->
+  <header class="mdc-top-app-bar mdc-top-app-bar--fixed mdc-elevation--z3 mdc-theme--surface"
+    style="background-color: white !important; color: #3c4043 !important;">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button id="menu-button"
+          class="mdc-icon-button material-icons mdc-top-app-bar__navigation-icon mdc-theme--on-surface">
+          <div class="mdc-icon-button__ripple"></div>
+          menu
+        </button>
+        <span class="mdc-top-app-bar__title"
+          style=" font-family: 'Google Sans', 'Roboto', sans-serif !important; font-weight: 400;">Shipment
+          Tracking</span>
+      </section>
+    </div>
+  </header>
+
+  <!-- menu -->
+  <aside class="mdc-drawer mdc-drawer--modal">
+    <div class="mdc-drawer__header mdc-elevation--z2">
+      <h3 class="mdc-drawer__title"
+        style=" font-family: 'Google Sans', 'Roboto', sans-serif !important; font-weight: 400; margin-top: 0.25rem">
+        Shipment Tracking</h3>
+    </div>
+    <div class=" mdc-drawer__content">
+      <nav class="mdc-deprecated-list">
+        <a class="mdc-deprecated-list-item" href="#" aria-current="page" tabindex="0" id="show-options-button">
+          <span class="mdc-deprecated-list-item__ripple"></span>
+          <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">settings</i>
+          <span class="mdc-deprecated-list-item__text">Options</span>
+        </a>
+        <a class="mdc-deprecated-list-item" href="#" aria-current="page" tabindex="0" id="reset-button">
+          <span class="mdc-deprecated-list-item__ripple"></span>
+          <i class="material-icons mdc-deprecated-list-item__graphic" aria-hidden="true">restart_alt</i>
+          <span class="mdc-deprecated-list-item__text">Reset</span>
+        </a>
+      </nav>
+    </div>
+  </aside>
+  <div class="mdc-drawer-scrim"></div>
+
+  <main class="mdc-top-app-bar--fixed-adjust" style="height:100%">
+
+    <div id="options-container"></div>
+
+    <div class="grid">
+      <div class="grid__col grid__col--info">
+        <div class="input-container">
+          <div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon">
+            <input class="mdc-text-field__input" id="tracking-id-input">
+            <div class="mdc-notched-outline">
+              <div class="mdc-notched-outline__leading"></div>
+              <div class="mdc-notched-outline__notch">
+                <label for="tracking-id-input" class="mdc-floating-label">Tracking ID</label>
+              </div>
+              <div class="mdc-notched-outline__trailing"></div>
+            </div>
+            <i class="material-icons mdc-text-field__icon mdc-text-field__icon--trailing" id="tracking-button"
+              tabindex="0" role="button">forward</i>
+          </div>
+        </div>
+        <div id="tracking-id-error"></div>
+
+        <div class="details-container" id="details-container" style="display:none">
+          <div id="loading">Loading...</div>
+
+          <div class="info-container">
+            <div class="heading">ESTIMATED DELIVERY</div>
+            <div class="eta-time" id="eta-time">n/a</div>
+            <div class="stops-count" id="stops-count">1 stop away</div>
+            <div class="heading" style="margin-top:32px;">DELIVERY LOCATION</div>
+            <div class="address" id="address">
+              n/a
+            </div>
+          </div>
+
+
+          <table class="shipment-details-table" style="margin-top:32px">
+            <tbody>
+              <tr>
+                <td class="shipment-details-table__label">Tracking ID</td>
+                <td class="shipment-details-table__value" id="tracking-id-value"></td>
+              </tr>
+
+              <tr>
+                <td class="shipment-details-table__label">Task type</td>
+                <td class="shipment-details-table__value" id="task-type-value"></td>
+              </tr>
+
+              <tr>
+                <td class="shipment-details-table__label">Task status</td>
+                <td class="shipment-details-table__value" id="task-status-value"></td>
+              </tr>
+
+              <tr>
+                <td class="shipment-details-table__label">Task outcome</td>
+                <td class="shipment-details-table__value" id="task-outcome-value"></td>
+              </tr>
+
+              <tr>
+                <td class="shipment-details-table__label"># stops remaining</td>
+                <td class="shipment-details-table__value" id="stops-remaining-value"></td>
+              </tr>
+
+              <tr>
+                <td class="shipment-details-table__label">ETA</td>
+                <td class="shipment-details-table__value" id="eta-value"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="grid__col grid__col--map">
+        <div id="map_canvas"></div>
+      </div>
+    </div>
+  </main>
+</body>
+<script src="options.js" defer></script>
+<script src="shipment_tracking.js" defer></script>
+<script src="config.js"></script>
+<!-- modify this url to add your API key. -->
+<!--<script defer src="https://maps.googleapis.com/maps/api/js?key=<key>&callback=initializeJourneySharing&v=beta&libraries=journeySharing"></script>-->
+<!-- or use dynamic loading: https://developers.google.com/maps/documentation/javascript/overview#Loading_the_Maps_API -->
+<script defer>
+  var script = document.createElement('script');
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initializeJourneySharing&v=beta&libraries=journeySharing`;
+  script.defer = true;
+  document.head.appendChild(script);
+</script>
+
+<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<!-- Attach Material Design classes to elements. -->
+<script>
+  const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
+  const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+  mdc.textField.MDCTextField.attachTo(document.querySelector('.mdc-text-field'));
+  topAppBar.listen('MDCTopAppBar:nav', () => {
+    drawer.open = !drawer.open;
+  });
+  document.querySelector('.mdc-drawer .mdc-deprecated-list').addEventListener('click', (e) => {
+    drawer.open = false;
+  });
+</script>
+
+</html>

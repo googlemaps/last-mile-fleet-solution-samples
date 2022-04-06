@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Google LLC
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         https://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/itinerary_list_fragment">
+
+  <fragment
+      android:id="@+id/itinerary_list_fragment"
+      android:name="com.google.mapsplatform.transportation.delivery.sample.driver.ui.itinerary.ItineraryListFragment"
+      android:label="fragment_itinerary_list"
+      tools:layout="@layout/fragment_itinerary_list" />
+
+  <fragment
+      android:id="@+id/itinerary_map_fragment"
+      android:name="com.google.mapsplatform.transportation.delivery.sample.driver.ui.itinerary.ItineraryMapFragment"
+      android:label="fragment_itinerary_map"
+      tools:layout="@layout/fragment_itinerary_map" />
+
+  <fragment
+      android:id="@+id/settings_fragment"
+      android:name="com.google.mapsplatform.transportation.delivery.sample.driver.settings.SettingsFragment"
+      android:label="fragment_settings"
+      tools:layout="@layout/fragment_settings" />
+
+  <fragment
+      android:id="@+id/details_fragment"
+      android:name="com.google.mapsplatform.transportation.delivery.sample.driver.ui.DeliveryDetailsFragment"
+      android:label="fragment_settings"
+      tools:layout="@layout/fragment_delivery_details" />
+
+</navigation>

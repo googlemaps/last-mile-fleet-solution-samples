@@ -1,0 +1,23 @@
+<html>
+  <div>
+    <p>Update task here.</p>
+    <p><input type="text" id="taskid" placeholder="task id"></p>
+    <p><textarea id="taskupdate" name="taskupdate" placeholder="task object (json)" style="width: 400px; height: 300px;"></textarea></p>
+    <p><button id="submit-taskupdate">Submit</button></p>
+  </div>
+  <pre id="result"></pre>
+  <script>
+    document.getElementById('submit-taskupdate').onclick = function() {
+      const taskId = document.getElementById('taskid').value;
+      const taskUpdate = document.getElementById('taskupdate').value;
+      const xhr = new XMLHttpRequest();
+      xhr.open('PUT', `/task/${taskId}`);
+      xhr.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          document.getElementById('result').innerText = xhr.responseText;
+        }
+      };
+      xhr.send(taskUpdate);
+    };
+  </script>
+</html>

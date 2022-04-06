@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Google LLC
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         https://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginHorizontal="@dimen/fragment_horizontal_margin"
+    tools:context=".settings.SettingsFragment"
+    android:orientation="vertical">
+
+  <TextView
+      android:id="@+id/settings_text_view"
+      android:text="@string/settings"
+      android:textSize="@dimen/fragment_header_text_size"
+      android:gravity="center_vertical"
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/fragment_header_height" />
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/setting_view_height">
+
+        <TextView
+            android:text="@string/location_tracking"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Switch
+            android:id="@+id/location_tracking_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <androidx.constraintlayout.widget.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/setting_view_height">
+        <TextView
+            android:text="@string/simulation"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent" />
+        <Switch
+            android:id="@+id/simulation_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+      </androidx.constraintlayout.widget.ConstraintLayout>
+
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center">
+        <TextView
+            android:text="@string/provider_id"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height" />
+        <EditText
+            android:id="@+id/provider_id_input"
+            android:inputType="text|textUri"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height"
+            android:layout_marginTop="-24dp"
+            android:hint="@string/provider_id_hint" />
+      </LinearLayout>
+
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center">
+        <TextView
+            android:text="@string/backend_url"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height" />
+        <EditText
+            android:id="@+id/backend_url_input"
+            android:inputType="text|textUri"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height"
+            android:layout_marginTop="-24dp"
+            android:hint="@string/backend_url_hint" />
+      </LinearLayout>
+
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center">
+        <TextView
+            android:text="@string/client_id"
+            android:textSize="18sp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height" />
+        <EditText
+            android:id="@+id/client_id_input"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_header_height"
+            android:layout_marginTop="-24dp"
+            android:hint="@string/client_id_hint" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

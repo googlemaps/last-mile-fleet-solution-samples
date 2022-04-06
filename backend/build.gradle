@@ -1,0 +1,126 @@
+/* Copyright 2020 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+buildscript {    // Configuration for building
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath 'com.google.cloud.tools:appengine-gradle-plugin:2.4.2'
+  }
+}
+
+plugins {
+  id 'com.github.sherter.google-java-format' version '0.8'
+  id 'com.google.cloud.artifactregistry.gradle-plugin' version '2.1.5'
+}
+
+repositories {   // repositories for Jar's you access in your code
+  maven {
+    url 'https://oss.sonatype.org/content/repositories/snapshots' // SNAPSHOT repository (if needed)
+  }
+  maven {
+    url 'artifactregistry://us-maven.pkg.dev/fleetengine-gapic/maven'
+  }
+  mavenCentral()
+}
+
+buildDir = 'gradle_build'
+
+apply plugin: 'java'                              // standard Java tasks
+apply plugin: 'war'                               // standard Web Archive plugin
+apply plugin: 'com.google.cloud.tools.appengine'  // App Engine tasks
+
+
+dependencies {
+  implementation 'com.google.appengine:appengine-api-1.0-sdk:1.9.79'
+  providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+
+  implementation 'jstl:jstl:1.2'
+
+  // Add dependencies here
+  implementation 'com.google.maps:grpc-google-maps-fleetengine-delivery-v1-java:0.0.348'
+
+  // Fleet Engine Auth Library and its dependencies
+  implementation 'com.google.maps:fleetengine-auth:1.8.0'
+  implementation 'com.google.guava:guava:1.55.0'
+  implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
+
+  implementation 'com.auth0:java-jwt:3.10.2'
+  implementation 'com.google.inject:guice:4.2.2'
+  implementation 'com.google.inject.extensions:guice-servlet:4.2.3'
+  implementation 'com.google.code.gson:gson:2.8.0'
+  implementation 'com.google.auto.value:auto-value-annotations:1.6.2'
+  implementation 'io.grpc:grpc-protobuf:1.44.1'
+  implementation 'io.grpc:grpc-stub:1.44.1'
+  implementation 'io.grpc:grpc-netty:1.44.1'
+  implementation 'javax.ws.rs:jsr311-api:1.1.1'
+  implementation 'com.google.protobuf:protobuf-java:3.17.3'
+  implementation 'com.google.protobuf:protobuf-java-util:3.17.3'
+  implementation 'javax.annotation:javax.annotation-api:1.2'
+  implementation 'io.netty:netty-tcnative-boringssl-static:2.0.49.Final'
+  annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
+
+  testImplementation 'junit:junit:4.12'
+  testImplementation 'com.google.truth:truth:1.1.3'
+  testImplementation 'org.mockito:mockito-all:1.10.19'
+  testImplementation 'org.springframework:spring-core:5.3.10'
+  testImplementation 'org.springframework:spring-web:5.3.10'
+  testImplementation 'org.springframework:spring-test:5.3.10'
+
+  testImplementation 'com.google.appengine:appengine-testing:+'
+  testImplementation 'com.google.appengine:appengine-api-stubs:+'
+  testImplementation 'com.google.appengine:appengine-tools-sdk:+'
+}
+
+// Always run unit tests
+appengineDeploy.dependsOn test
+appengineStage.dependsOn test
+
+appengine {  // App Engine tasks configuration
+  // The run section is only used if you're using App Engine Standard
+  // (via appengineweb.xml). If you wish to deploy on App Engine Flexible
+  // (via app.yaml), this section must be commented out or removed.
+  run {
+    automaticRestart = true
+    host = "0.0.0.0"
+    port = 8080
+  }
+
+  deploy {   // deploy configuration
+    projectId = 'lmfs-sample-apps'
+    version = '1'
+  }
+}
+
+test {
+  useJUnit()
+  testLogging.showStandardStreams = true
+  beforeTest { descriptor ->
+     logger.lifecycle("test: " + descriptor + "  Running")
+  }
+
+  onOutput { descriptor, event ->
+     logger.lifecycle("test: " + descriptor + ": " + event.message )
+  }
+  afterTest { descriptor, result ->
+    logger.lifecycle("test: " + descriptor + ": " + result )
+  }
+}
+
+group   = "com.example.appenginej8"        // Generated output GroupId
+version = "1.0-SNAPSHOT"       // Version in generated output
+
+sourceCompatibility = 1.8     // App Engine Flexible uses Java 8
+targetCompatibility = 1.8     // App Engine Flexible uses Java 8
