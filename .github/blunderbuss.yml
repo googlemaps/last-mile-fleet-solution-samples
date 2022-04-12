@@ -1,4 +1,4 @@
 assign_issues:
- - googlemaps-eng-lmfs
+ - googlemaps/googlemaps-eng-lmfs
 assign_prs:
- - googlemaps-eng-lmfs
+ - googlemaps/googlemaps-eng-lmfs
