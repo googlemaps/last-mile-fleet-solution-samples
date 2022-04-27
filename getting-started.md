@@ -85,7 +85,7 @@ This document requires the use of the following pieces of information:
 1.  Obtain the source of the sample apps from GitHub:
 
     ```sh
-    $ git clone https://github.com/googlemaps-samples/last-mile-fleet-solution-samples
+    $ git clone https://github.com/googlemaps/last-mile-fleet-solution-samples.git
     ```
 
 1.  Update the configuration by running the script below. The script will prompt
