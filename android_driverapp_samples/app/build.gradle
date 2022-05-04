@@ -60,9 +60,14 @@ android {
         }
     }
     buildTypes {
-      all {
-        proguardFiles 'custom_proguard.pgcfg'
-      }
+        // Run proguard. Note that the Navigation SDK includes its own proguard config, and that
+        // will be included transitively by depending on the Navigation SDK.
+        // If the proguard step takes too long, consider enabling multidex for development work
+        // instead.
+        all {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
     }
     lintOptions {
         abortOnError false

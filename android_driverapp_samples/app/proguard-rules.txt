@@ -1,0 +1,62 @@
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in /Users/<username>/Library/Android/sdk/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the proguardFiles
+# directive in build.gradle.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+#glide start
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+#glide end
+
+#okhttp start
+# JSR 305 annotations are for embedding nullability information.
+-dontwarn javax.annotation.**
+
+# A resource is loaded with a relative path so the package of this class must be preserved.
+-keepnames class okhttp3.internal.publicsuffix.PublicSuffixDatabase
+
+# Animal Sniffer compileOnly dependency to ensure APIs are compatible with older versions of Java.
+-dontwarn org.codehaus.mojo.animal_sniffer.*
+
+# OkHttp platform used only on JVM and when Conscrypt dependency is available.
+-dontwarn okhttp3.internal.platform.ConscryptPlatform
+#okhttp end
+
+# Keep classes used by the gRPC client callinge GetTask on FleetEngine.
+# (Is -keepnames sufficient, allowing shrinking of unused classes?)
+-keep public class google.** implements com.google.protobuf.MessageLiteOrBuilder { *; }
+-keep public class com.google.type.** implements com.google.protobuf.MessageLiteOrBuilder { *; }
+-keep public class com.google.protobuf.** implements com.google.protobuf.MessageLiteOrBuilder { *; }
+
+# Keep whatever classes gson might need to deserialize Backend classes
+-keep class com.google.mapsplatform.transportation.delivery.sample.driver.adapter.** { *; }
+-keep class com.google.mapsplatform.transportation.delivery.sample.driver.config.** { *; }
+-keep class com.google.mapsplatform.transportation.delivery.sample.driver.domain.** { *; }
+-keep class com.google.mapsplatform.transportation.delivery.sample.driver.backend.** { *; }
+
+# Testing related classes
+-dontwarn org.hamcrest.**
+-dontwarn android.test.**
+-dontwarn androidx.test.**
+-keep class junit.** { *; }
+-dontwarn junit.**
+-keep class org.junit.** { *; }
+-dontwarn org.junit.**
+
