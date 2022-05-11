@@ -41,7 +41,7 @@ public class SettingsFragment extends Fragment {
     locationTrackingSwitch.setChecked(preferences.getLocationTrackingSetting());
     locationTrackingSwitch.setOnCheckedChangeListener(
         (buttonView, isChecked) -> preferences.saveLocationTrackingSetting(isChecked));
-
+/*
     Switch simulationSwitch = view.findViewById(R.id.simulation_switch);
     simulationSwitch.setChecked(preferences.getSimulationSetting());
     simulationSwitch.setOnCheckedChangeListener(
@@ -78,6 +78,7 @@ public class SettingsFragment extends Fragment {
             preferences.saveBackendUrl(s.toString());
           }
         });
+*/
 
     EditText clientIdEditText = view.findViewById(R.id.client_id_input);
     clientIdEditText.setText(preferences.getClientId(), TextView.BufferType.NORMAL);

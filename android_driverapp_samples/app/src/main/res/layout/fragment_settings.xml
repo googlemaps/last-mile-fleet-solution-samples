@@ -55,62 +55,17 @@
             app:layout_constraintEnd_toEndOf="parent" />
       </androidx.constraintlayout.widget.ConstraintLayout>
 
-      <androidx.constraintlayout.widget.ConstraintLayout
+      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"
-          android:layout_height="@dimen/setting_view_height">
-        <TextView
-            android:text="@string/simulation"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent" />
-        <Switch
-            android:id="@+id/simulation_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-      </androidx.constraintlayout.widget.ConstraintLayout>
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:gravity="center"/>
 
       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:orientation="vertical"
-          android:gravity="center">
-        <TextView
-            android:text="@string/provider_id"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height" />
-        <EditText
-            android:id="@+id/provider_id_input"
-            android:inputType="text|textUri"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height"
-            android:layout_marginTop="-24dp"
-            android:hint="@string/provider_id_hint" />
-      </LinearLayout>
-
-      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:gravity="center">
-        <TextView
-            android:text="@string/backend_url"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height" />
-        <EditText
-            android:id="@+id/backend_url_input"
-            android:inputType="text|textUri"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height"
-            android:layout_marginTop="-24dp"
-            android:hint="@string/backend_url_hint" />
-      </LinearLayout>
+          android:gravity="center"/>
 
       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"

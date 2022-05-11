@@ -22,5 +22,6 @@
   <base-config cleartextTrafficPermitted="false" />
   <domain-config cleartextTrafficPermitted="true">
     <domain includeSubdomains="true">localhost</domain>
+    <domain includeSubdomains="true">appspot.com</domain>
   </domain-config>
 </network-security-config>

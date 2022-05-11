@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Delivery Driver</string>
+  <string name="app_name">Cyberdyne Systems Logistics</string>
 
   <!-- Bottom navigation menu item names -->
   <string name="list">List</string>
@@ -74,8 +74,8 @@
   <string name="provider_id_hint">Cloud project ID</string>
   <string name="backend_url">Backend URL</string>
   <string name="backend_url_hint">https://...</string>
-  <string name="client_id">Client ID</string>
-  <string name="client_id_hint">Unique ID for this client</string>
+  <string name="client_id">Your Codename</string>
+  <string name="client_id_hint">Codename for this client</string>
 
   <string name="your_itinerary">Your itinerary</string>
   <string name="delivery_details">Delivery Details</string>

@@ -58,7 +58,7 @@ public class Preferences {
   }
 
   public boolean getSimulationSetting() {
-    return sharedPreferences.getBoolean(SIMULATION_KEY, true);
+    return sharedPreferences.getBoolean(SIMULATION_KEY, false);
   }
 
   public void saveProviderId(String providerId) {
@@ -66,7 +66,7 @@ public class Preferences {
   }
 
   public String getProviderId() {
-    return sharedPreferences.getString(PROVIDER_ID_KEY, "");
+    return sharedPreferences.getString(PROVIDER_ID_KEY, "lmfs-field-day");
   }
 
   public void saveBackendUrl(String backendUrl) {
@@ -74,7 +74,7 @@ public class Preferences {
   }
 
   public String getBackendUrl() {
-    return sharedPreferences.getString(BACKEND_URL_KEY, "http://localhost:8080");
+    return sharedPreferences.getString(BACKEND_URL_KEY, "http://lmfs-field-day.uc.r.appspot.com");
   }
 
   public void saveClientId(String clientId) {
@@ -83,10 +83,6 @@ public class Preferences {
 
   public String getClientId() {
     String clientId = sharedPreferences.getString(CLIENT_ID_KEY, null);
-    if (clientId == null) {
-      clientId = UUID.randomUUID().toString();
-      saveClientId(clientId);
-    }
     return clientId;
   }
 }
