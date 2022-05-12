@@ -72,7 +72,7 @@ dependencies {
   implementation 'io.netty:netty-tcnative-boringssl-static:2.0.49.Final'
   annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
 
-  testImplementation 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.13.2'
   testImplementation 'com.google.truth:truth:1.1.3'
   testImplementation 'org.mockito:mockito-all:1.10.19'
   testImplementation 'org.springframework:spring-core:5.3.10'
