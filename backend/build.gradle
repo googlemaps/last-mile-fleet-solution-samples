@@ -63,7 +63,7 @@ dependencies {
   implementation 'com.google.code.gson:gson:2.8.0'
   implementation 'com.google.auto.value:auto-value-annotations:1.6.2'
   implementation 'io.grpc:grpc-protobuf:1.44.1'
-  implementation 'io.grpc:grpc-stub:1.44.1'
+  implementation 'io.grpc:grpc-stub:1.46.0'
   implementation 'io.grpc:grpc-netty:1.44.1'
   implementation 'javax.ws.rs:jsr311-api:1.1.1'
   implementation 'com.google.protobuf:protobuf-java:3.17.3'
