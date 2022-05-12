@@ -59,7 +59,7 @@ dependencies {
 
   implementation 'com.auth0:java-jwt:3.10.2'
   implementation 'com.google.inject:guice:4.2.2'
-  implementation 'com.google.inject.extensions:guice-servlet:4.2.3'
+  implementation 'com.google.inject.extensions:guice-servlet:5.1.0'
   implementation 'com.google.code.gson:gson:2.8.0'
   implementation 'com.google.auto.value:auto-value-annotations:1.6.2'
   implementation 'io.grpc:grpc-protobuf:1.44.1'
