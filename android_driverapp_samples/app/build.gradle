@@ -117,7 +117,7 @@ dependencies {
     implementation 'io.grpc:grpc-stub:1.35.0'
     implementation 'io.grpc:grpc-protobuf-lite:1.35.0'
 
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.0.0"
+    implementation "androidx.lifecycle:lifecycle-common-java8:2.4.1"
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata:2.2.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-core:2.2.0'
