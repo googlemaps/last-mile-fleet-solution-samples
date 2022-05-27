@@ -1,0 +1,769 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27451A0E2750BB1000D379ED /* AccessTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27451A0D2750BB1000D379ED /* AccessTokenProvider.swift */; };
+		27451A112754432F00D379ED /* VehicleReporterListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27451A102754432F00D379ED /* VehicleReporterListener.swift */; };
+		275B47BC272B7DA7006750F1 /* LMFSDriverSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B47BB272B7DA7006750F1 /* LMFSDriverSampleApp.swift */; };
+		275B47BE272B7DA7006750F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B47BD272B7DA7006750F1 /* ContentView.swift */; };
+		275B47C0272B7DA9006750F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 275B47BF272B7DA9006750F1 /* Assets.xcassets */; };
+		275B47EC272BA043006750F1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B47EB272BA043006750F1 /* Task.swift */; };
+		275B47F2272BC70E006750F1 /* Manifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B47F1272BC70E006750F1 /* Manifest.swift */; };
+		275B4897272F6C30006750F1 /* ApplicationDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275B4896272F6C30006750F1 /* ApplicationDefaults.swift */; };
+		27BAFD7327CEFFD7002CDB19 /* RequestTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAFD7227CEFFD7002CDB19 /* RequestTracking.swift */; };
+		27BAFD7527D053DD002CDB19 /* test_manifest_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 27BAFD7427D053DD002CDB19 /* test_manifest_2.json */; };
+		27BAFD7727D055E5002CDB19 /* RequestTrackingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BAFD7627D055E5002CDB19 /* RequestTrackingTests.swift */; };
+		27C9FE6027E28AA4005D9149 /* LocalOverrides in Resources */ = {isa = PBXBuildFile; fileRef = 27C9FE5F27E28AA4005D9149 /* LocalOverrides */; };
+		27C9FEC127EC10BB005D9149 /* NetworkServiceManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C9FEC027EC10BB005D9149 /* NetworkServiceManagerTests.swift */; };
+		27C9FEC227ED003A005D9149 /* test_manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F60B9B6278FA76200552143 /* test_manifest.json */; };
+		699F973268376190446AD5C6 /* libPods-LMFSDriverSampleApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAE8E2FD3202818217A30D17 /* libPods-LMFSDriverSampleApp.a */; };
+		7F60B9B7278FA76200552143 /* test_manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7F60B9B6278FA76200552143 /* test_manifest.json */; };
+		7F673447278CD730005A6730 /* NetworkServiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F673446278CD730005A6730 /* NetworkServiceManager.swift */; };
+		7F673449278CD77E005A6730 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F673448278CD77E005A6730 /* ModelData.swift */; };
+		7F673457278E283E005A6730 /* NavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F673455278E283E005A6730 /* NavViewController.swift */; };
+		7F673458278E283E005A6730 /* NavViewControllerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F673456278E283E005A6730 /* NavViewControllerBridge.swift */; };
+		7F67345D278E2BF8005A6730 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F67345B278E2BF8005A6730 /* Preview Assets.xcassets */; };
+		7FA703442798EF8F0097EF96 /* StopPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA703412798EF8F0097EF96 /* StopPage.swift */; };
+		7FA703452798EF8F0097EF96 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA703422798EF8F0097EF96 /* PageViewController.swift */; };
+		7FA703462798EF8F0097EF96 /* StopMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA703432798EF8F0097EF96 /* StopMap.swift */; };
+		7FA703482798EFB70097EF96 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FA703472798EFB70097EF96 /* Settings.swift */; };
+		7FBA6552275E5C61003115F8 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 7FBA6551275E5C61003115F8 /* Localizable.stringsdict */; };
+		7FBF0C6D278F8FBE00FBEC82 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBF0C6C278F8FBE00FBEC82 /* ModelTests.swift */; };
+		7FD786DF2790F29300D06EB2 /* MapViewControllerBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786DD2790F29300D06EB2 /* MapViewControllerBridge.swift */; };
+		7FD786E02790F29300D06EB2 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786DE2790F29300D06EB2 /* MapViewController.swift */; };
+		7FD786F62790F3E300D06EB2 /* StopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786F12790F3E300D06EB2 /* StopHeader.swift */; };
+		7FD786F72790F3E300D06EB2 /* StopStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786F22790F3E300D06EB2 /* StopStatusImage.swift */; };
+		7FD786F82790F3E300D06EB2 /* TaskButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786F32790F3E300D06EB2 /* TaskButtons.swift */; };
+		7FD786F92790F3E300D06EB2 /* TaskHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786F42790F3E300D06EB2 /* TaskHeader.swift */; };
+		7FD786FA2790F3E300D06EB2 /* TaskStatusImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786F52790F3E300D06EB2 /* TaskStatusImage.swift */; };
+		7FD786FF2790FCDB00D06EB2 /* TaskDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786FD2790FCDA00D06EB2 /* TaskDetails.swift */; };
+		7FD787002790FCDB00D06EB2 /* TaskDetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD786FE2790FCDB00D06EB2 /* TaskDetailsPage.swift */; };
+		7FD787032790FDE000D06EB2 /* StopListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD787012790FDE000D06EB2 /* StopListRow.swift */; };
+		7FD787042790FDE000D06EB2 /* StopList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD787022790FDE000D06EB2 /* StopList.swift */; };
+		7FD787072790FED500D06EB2 /* CustomMarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD787062790FED500D06EB2 /* CustomMarkerView.swift */; };
+		7FD7870A2790FEF400D06EB2 /* StopDetailsPageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD787092790FEF400D06EB2 /* StopDetailsPageTask.swift */; };
+		7FD7870C2790FF0200D06EB2 /* StopDetailsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FD7870B2790FF0200D06EB2 /* StopDetailsPage.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7FBF0C6E278F8FBE00FBEC82 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 275B47B0272B7DA7006750F1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 275B47B7272B7DA7006750F1;
+			remoteInfo = LMFSDriverSampleApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27451A0D2750BB1000D379ED /* AccessTokenProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenProvider.swift; sourceTree = "<group>"; };
+		27451A102754432F00D379ED /* VehicleReporterListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleReporterListener.swift; sourceTree = "<group>"; };
+		275B47BB272B7DA7006750F1 /* LMFSDriverSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LMFSDriverSampleApp.swift; sourceTree = "<group>"; };
+		275B47BD272B7DA7006750F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		275B47BF272B7DA9006750F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		275B47EB272BA043006750F1 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		275B47F1272BC70E006750F1 /* Manifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manifest.swift; sourceTree = "<group>"; };
+		275B4896272F6C30006750F1 /* ApplicationDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDefaults.swift; sourceTree = "<group>"; };
+		27BAFD7227CEFFD7002CDB19 /* RequestTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTracking.swift; sourceTree = "<group>"; };
+		27BAFD7427D053DD002CDB19 /* test_manifest_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_manifest_2.json; sourceTree = "<group>"; };
+		27BAFD7627D055E5002CDB19 /* RequestTrackingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTrackingTests.swift; sourceTree = "<group>"; };
+		27C9FE5F27E28AA4005D9149 /* LocalOverrides */ = {isa = PBXFileReference; lastKnownFileType = folder; name = LocalOverrides; path = LMFSDriverSampleApp/LocalOverrides; sourceTree = "<group>"; };
+		27C9FEC027EC10BB005D9149 /* NetworkServiceManagerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceManagerTests.swift; sourceTree = "<group>"; };
+		27DA92DC27421124009656A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7F60B9B6278FA76200552143 /* test_manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = test_manifest.json; sourceTree = "<group>"; };
+		7F673446278CD730005A6730 /* NetworkServiceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkServiceManager.swift; sourceTree = "<group>"; };
+		7F673448278CD77E005A6730 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		7F673455278E283E005A6730 /* NavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewController.swift; sourceTree = "<group>"; };
+		7F673456278E283E005A6730 /* NavViewControllerBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavViewControllerBridge.swift; sourceTree = "<group>"; };
+		7F67345B278E2BF8005A6730 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7FA703412798EF8F0097EF96 /* StopPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopPage.swift; sourceTree = "<group>"; };
+		7FA703422798EF8F0097EF96 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		7FA703432798EF8F0097EF96 /* StopMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopMap.swift; sourceTree = "<group>"; };
+		7FA703472798EFB70097EF96 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7FAA27C12788C33C00065173 /* LMFSDriverSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LMFSDriverSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FBA6551275E5C61003115F8 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		7FBF0C6A278F8FBE00FBEC82 /* LMFSDriverSampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LMFSDriverSampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FBF0C6C278F8FBE00FBEC82 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		7FD786DD2790F29300D06EB2 /* MapViewControllerBridge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerBridge.swift; sourceTree = "<group>"; };
+		7FD786DE2790F29300D06EB2 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		7FD786F12790F3E300D06EB2 /* StopHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopHeader.swift; sourceTree = "<group>"; };
+		7FD786F22790F3E300D06EB2 /* StopStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopStatusImage.swift; sourceTree = "<group>"; };
+		7FD786F32790F3E300D06EB2 /* TaskButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskButtons.swift; sourceTree = "<group>"; };
+		7FD786F42790F3E300D06EB2 /* TaskHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskHeader.swift; sourceTree = "<group>"; };
+		7FD786F52790F3E300D06EB2 /* TaskStatusImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskStatusImage.swift; sourceTree = "<group>"; };
+		7FD786FD2790FCDA00D06EB2 /* TaskDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetails.swift; sourceTree = "<group>"; };
+		7FD786FE2790FCDB00D06EB2 /* TaskDetailsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailsPage.swift; sourceTree = "<group>"; };
+		7FD787012790FDE000D06EB2 /* StopListRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopListRow.swift; sourceTree = "<group>"; };
+		7FD787022790FDE000D06EB2 /* StopList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopList.swift; sourceTree = "<group>"; };
+		7FD787062790FED500D06EB2 /* CustomMarkerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMarkerView.swift; sourceTree = "<group>"; };
+		7FD787092790FEF400D06EB2 /* StopDetailsPageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopDetailsPageTask.swift; sourceTree = "<group>"; };
+		7FD7870B2790FF0200D06EB2 /* StopDetailsPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopDetailsPage.swift; sourceTree = "<group>"; };
+		ACFE22392552DEB0D6A4C8F4 /* Pods-LMFSDriverSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMFSDriverSampleApp.release.xcconfig"; path = "Target Support Files/Pods-LMFSDriverSampleApp/Pods-LMFSDriverSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		CAE8E2FD3202818217A30D17 /* libPods-LMFSDriverSampleApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LMFSDriverSampleApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D399396088163660E431CF92 /* Pods-LMFSDriverSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LMFSDriverSampleApp.debug.xcconfig"; path = "Target Support Files/Pods-LMFSDriverSampleApp/Pods-LMFSDriverSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		275B47B5272B7DA7006750F1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				699F973268376190446AD5C6 /* libPods-LMFSDriverSampleApp.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBF0C67278F8FBE00FBEC82 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27451A092750A0DC00D379ED /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7F673446278CD730005A6730 /* NetworkServiceManager.swift */,
+				27451A0D2750BB1000D379ED /* AccessTokenProvider.swift */,
+				27BAFD7227CEFFD7002CDB19 /* RequestTracking.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		275B47AF272B7DA7006750F1 = {
+			isa = PBXGroup;
+			children = (
+				27C9FE5F27E28AA4005D9149 /* LocalOverrides */,
+				7FBA6551275E5C61003115F8 /* Localizable.stringsdict */,
+				275B47BA272B7DA7006750F1 /* LMFSDriverSampleApp */,
+				45D3EF022F40EA5A6753EDDB /* Pods */,
+				7FAA27C12788C33C00065173 /* LMFSDriverSampleApp.app */,
+				7FBF0C6B278F8FBE00FBEC82 /* LMFSDriverSampleAppTests */,
+				7FBF0C6A278F8FBE00FBEC82 /* LMFSDriverSampleAppTests.xctest */,
+				6F6F152515D5BB3235282681 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		275B47BA272B7DA7006750F1 /* LMFSDriverSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				7FA703472798EFB70097EF96 /* Settings.swift */,
+				7FD787052790FECD00D06EB2 /* MapTab */,
+				7FD786FB2790FCC700D06EB2 /* ListTab */,
+				7FD786DC2790F28100D06EB2 /* GoogleMapsBridge */,
+				7F673459278E2BD9005A6730 /* Preview Content */,
+				7F673454278E282C005A6730 /* Navigation */,
+				7F67344A278E250F005A6730 /* Utils */,
+				275B48A02730CA18006750F1 /* App */,
+				275B47BF272B7DA9006750F1 /* Assets.xcassets */,
+				27DA92DC27421124009656A2 /* Info.plist */,
+				275B489E2730C9DB006750F1 /* Models */,
+				27451A092750A0DC00D379ED /* Services */,
+			);
+			path = LMFSDriverSampleApp;
+			sourceTree = "<group>";
+		};
+		275B489E2730C9DB006750F1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F673448278CD77E005A6730 /* ModelData.swift */,
+				275B47EB272BA043006750F1 /* Task.swift */,
+				275B47F1272BC70E006750F1 /* Manifest.swift */,
+				27451A102754432F00D379ED /* VehicleReporterListener.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		275B48A02730CA18006750F1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				275B47BB272B7DA7006750F1 /* LMFSDriverSampleApp.swift */,
+				275B47BD272B7DA7006750F1 /* ContentView.swift */,
+				275B4896272F6C30006750F1 /* ApplicationDefaults.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		45D3EF022F40EA5A6753EDDB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D399396088163660E431CF92 /* Pods-LMFSDriverSampleApp.debug.xcconfig */,
+				ACFE22392552DEB0D6A4C8F4 /* Pods-LMFSDriverSampleApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6F6F152515D5BB3235282681 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CAE8E2FD3202818217A30D17 /* libPods-LMFSDriverSampleApp.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7F67344A278E250F005A6730 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7FD786F12790F3E300D06EB2 /* StopHeader.swift */,
+				7FD786F22790F3E300D06EB2 /* StopStatusImage.swift */,
+				7FD786F32790F3E300D06EB2 /* TaskButtons.swift */,
+				7FD786F42790F3E300D06EB2 /* TaskHeader.swift */,
+				7FD786F52790F3E300D06EB2 /* TaskStatusImage.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		7F673454278E282C005A6730 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				7F673455278E283E005A6730 /* NavViewController.swift */,
+				7F673456278E283E005A6730 /* NavViewControllerBridge.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		7F673459278E2BD9005A6730 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				7F67345B278E2BF8005A6730 /* Preview Assets.xcassets */,
+				27BAFD7427D053DD002CDB19 /* test_manifest_2.json */,
+				7F60B9B6278FA76200552143 /* test_manifest.json */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7FBF0C6B278F8FBE00FBEC82 /* LMFSDriverSampleAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				27C9FEC027EC10BB005D9149 /* NetworkServiceManagerTests.swift */,
+				7FBF0C6C278F8FBE00FBEC82 /* ModelTests.swift */,
+				27BAFD7627D055E5002CDB19 /* RequestTrackingTests.swift */,
+			);
+			path = LMFSDriverSampleAppTests;
+			sourceTree = "<group>";
+		};
+		7FD786DC2790F28100D06EB2 /* GoogleMapsBridge */ = {
+			isa = PBXGroup;
+			children = (
+				7FD786DE2790F29300D06EB2 /* MapViewController.swift */,
+				7FD786DD2790F29300D06EB2 /* MapViewControllerBridge.swift */,
+			);
+			path = GoogleMapsBridge;
+			sourceTree = "<group>";
+		};
+		7FD786FB2790FCC700D06EB2 /* ListTab */ = {
+			isa = PBXGroup;
+			children = (
+				7FD787022790FDE000D06EB2 /* StopList.swift */,
+				7FD787012790FDE000D06EB2 /* StopListRow.swift */,
+				7FD786FC2790FCD000D06EB2 /* Details */,
+			);
+			path = ListTab;
+			sourceTree = "<group>";
+		};
+		7FD786FC2790FCD000D06EB2 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				7FD786FD2790FCDA00D06EB2 /* TaskDetails.swift */,
+				7FD786FE2790FCDB00D06EB2 /* TaskDetailsPage.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		7FD787052790FECD00D06EB2 /* MapTab */ = {
+			isa = PBXGroup;
+			children = (
+				7FD787082790FEEB00D06EB2 /* MapStopDetails */,
+				7FD787062790FED500D06EB2 /* CustomMarkerView.swift */,
+				7FA703422798EF8F0097EF96 /* PageViewController.swift */,
+				7FA703432798EF8F0097EF96 /* StopMap.swift */,
+				7FA703412798EF8F0097EF96 /* StopPage.swift */,
+			);
+			path = MapTab;
+			sourceTree = "<group>";
+		};
+		7FD787082790FEEB00D06EB2 /* MapStopDetails */ = {
+			isa = PBXGroup;
+			children = (
+				7FD787092790FEF400D06EB2 /* StopDetailsPageTask.swift */,
+				7FD7870B2790FF0200D06EB2 /* StopDetailsPage.swift */,
+			);
+			path = MapStopDetails;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		275B47B7272B7DA7006750F1 /* LMFSDriverSampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 275B47DC272B7DAA006750F1 /* Build configuration list for PBXNativeTarget "LMFSDriverSampleApp" */;
+			buildPhases = (
+				C9431D48C1A0B015EB98E099 /* [CP] Check Pods Manifest.lock */,
+				275B47B4272B7DA7006750F1 /* Sources */,
+				275B47B5272B7DA7006750F1 /* Frameworks */,
+				275B47B6272B7DA7006750F1 /* Resources */,
+				EBABC82DBF5E58288A975D71 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LMFSDriverSampleApp;
+			productName = "LMFS-sample-app-v1";
+			productReference = 7FAA27C12788C33C00065173 /* LMFSDriverSampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7FBF0C69278F8FBE00FBEC82 /* LMFSDriverSampleAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7FBF0C72278F8FBE00FBEC82 /* Build configuration list for PBXNativeTarget "LMFSDriverSampleAppTests" */;
+			buildPhases = (
+				7FBF0C66278F8FBE00FBEC82 /* Sources */,
+				7FBF0C67278F8FBE00FBEC82 /* Frameworks */,
+				7FBF0C68278F8FBE00FBEC82 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7FBF0C6F278F8FBE00FBEC82 /* PBXTargetDependency */,
+			);
+			name = LMFSDriverSampleAppTests;
+			productName = LMFSDriverSampleAppTests;
+			productReference = 7FBF0C6A278F8FBE00FBEC82 /* LMFSDriverSampleAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		275B47B0272B7DA7006750F1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1300;
+				TargetAttributes = {
+					275B47B7272B7DA7006750F1 = {
+						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1320;
+					};
+					7FBF0C69278F8FBE00FBEC82 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 275B47B7272B7DA7006750F1;
+					};
+				};
+			};
+			buildConfigurationList = 275B47B3272B7DA7006750F1 /* Build configuration list for PBXProject "LMFSDriverSampleApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 275B47AF272B7DA7006750F1;
+			productRefGroup = 275B47AF272B7DA7006750F1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				275B47B7272B7DA7006750F1 /* LMFSDriverSampleApp */,
+				7FBF0C69278F8FBE00FBEC82 /* LMFSDriverSampleAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		275B47B6272B7DA7006750F1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7F67345D278E2BF8005A6730 /* Preview Assets.xcassets in Resources */,
+				275B47C0272B7DA9006750F1 /* Assets.xcassets in Resources */,
+				7F60B9B7278FA76200552143 /* test_manifest.json in Resources */,
+				27BAFD7527D053DD002CDB19 /* test_manifest_2.json in Resources */,
+				27C9FE6027E28AA4005D9149 /* LocalOverrides in Resources */,
+				7FBA6552275E5C61003115F8 /* Localizable.stringsdict in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBF0C68278F8FBE00FBEC82 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27C9FEC227ED003A005D9149 /* test_manifest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C9431D48C1A0B015EB98E099 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LMFSDriverSampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBABC82DBF5E58288A975D71 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LMFSDriverSampleApp/Pods-LMFSDriverSampleApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LMFSDriverSampleApp/Pods-LMFSDriverSampleApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LMFSDriverSampleApp/Pods-LMFSDriverSampleApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		275B47B4272B7DA7006750F1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				275B4897272F6C30006750F1 /* ApplicationDefaults.swift in Sources */,
+				7FD786F92790F3E300D06EB2 /* TaskHeader.swift in Sources */,
+				7F673458278E283E005A6730 /* NavViewControllerBridge.swift in Sources */,
+				27451A112754432F00D379ED /* VehicleReporterListener.swift in Sources */,
+				7FD786F82790F3E300D06EB2 /* TaskButtons.swift in Sources */,
+				7FD787072790FED500D06EB2 /* CustomMarkerView.swift in Sources */,
+				7FD7870C2790FF0200D06EB2 /* StopDetailsPage.swift in Sources */,
+				27BAFD7327CEFFD7002CDB19 /* RequestTracking.swift in Sources */,
+				7F673457278E283E005A6730 /* NavViewController.swift in Sources */,
+				7FA703442798EF8F0097EF96 /* StopPage.swift in Sources */,
+				7FD787032790FDE000D06EB2 /* StopListRow.swift in Sources */,
+				7F673449278CD77E005A6730 /* ModelData.swift in Sources */,
+				275B47BE272B7DA7006750F1 /* ContentView.swift in Sources */,
+				7FD786FA2790F3E300D06EB2 /* TaskStatusImage.swift in Sources */,
+				7FD786DF2790F29300D06EB2 /* MapViewControllerBridge.swift in Sources */,
+				275B47EC272BA043006750F1 /* Task.swift in Sources */,
+				7FA703452798EF8F0097EF96 /* PageViewController.swift in Sources */,
+				7FD7870A2790FEF400D06EB2 /* StopDetailsPageTask.swift in Sources */,
+				7F673447278CD730005A6730 /* NetworkServiceManager.swift in Sources */,
+				27451A0E2750BB1000D379ED /* AccessTokenProvider.swift in Sources */,
+				7FD786E02790F29300D06EB2 /* MapViewController.swift in Sources */,
+				7FD786FF2790FCDB00D06EB2 /* TaskDetails.swift in Sources */,
+				7FD786F72790F3E300D06EB2 /* StopStatusImage.swift in Sources */,
+				7FD786F62790F3E300D06EB2 /* StopHeader.swift in Sources */,
+				7FD787042790FDE000D06EB2 /* StopList.swift in Sources */,
+				7FA703482798EFB70097EF96 /* Settings.swift in Sources */,
+				275B47F2272BC70E006750F1 /* Manifest.swift in Sources */,
+				275B47BC272B7DA7006750F1 /* LMFSDriverSampleApp.swift in Sources */,
+				7FD787002790FCDB00D06EB2 /* TaskDetailsPage.swift in Sources */,
+				7FA703462798EF8F0097EF96 /* StopMap.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7FBF0C66278F8FBE00FBEC82 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27BAFD7727D055E5002CDB19 /* RequestTrackingTests.swift in Sources */,
+				7FBF0C6D278F8FBE00FBEC82 /* ModelTests.swift in Sources */,
+				27C9FEC127EC10BB005D9149 /* NetworkServiceManagerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7FBF0C6F278F8FBE00FBEC82 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 275B47B7272B7DA7006750F1 /* LMFSDriverSampleApp */;
+			targetProxy = 7FBF0C6E278F8FBE00FBEC82 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		275B47DA272B7DAA006750F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		275B47DB272B7DAA006750F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		275B47DD272B7DAA006750F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D399396088163660E431CF92 /* Pods-LMFSDriverSampleApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3X3A88U67U;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LMFSDriverSampleApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.mapsplatform.transportation.delivery.sample.driver;
+				PRODUCT_NAME = LMFSDriverSampleApp;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		275B47DE272B7DAA006750F1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACFE22392552DEB0D6A4C8F4 /* Pods-LMFSDriverSampleApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 3X3A88U67U;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LMFSDriverSampleApp/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.mapsplatform.transportation.delivery.sample.driver;
+				PRODUCT_NAME = LMFSDriverSampleApp;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		7FBF0C70278F8FBE00FBEC82 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.mapsplatform.transportation.delivery.sample.driver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LMFSDriverSampleApp.app/LMFSDriverSampleApp";
+			};
+			name = Debug;
+		};
+		7FBF0C71278F8FBE00FBEC82 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.google.mapsplatform.transportation.delivery.sample.driver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LMFSDriverSampleApp.app/LMFSDriverSampleApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		275B47B3272B7DA7006750F1 /* Build configuration list for PBXProject "LMFSDriverSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275B47DA272B7DAA006750F1 /* Debug */,
+				275B47DB272B7DAA006750F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		275B47DC272B7DAA006750F1 /* Build configuration list for PBXNativeTarget "LMFSDriverSampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				275B47DD272B7DAA006750F1 /* Debug */,
+				275B47DE272B7DAA006750F1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7FBF0C72278F8FBE00FBEC82 /* Build configuration list for PBXNativeTarget "LMFSDriverSampleAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FBF0C70278F8FBE00FBEC82 /* Debug */,
+				7FBF0C71278F8FBE00FBEC82 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 275B47B0272B7DA7006750F1 /* Project object */;
+}

@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -58,13 +58,13 @@ dependencies {
   implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
 
   implementation 'com.auth0:java-jwt:3.10.2'
-  implementation 'com.google.inject:guice:4.2.2'
-  implementation 'com.google.inject.extensions:guice-servlet:4.2.3'
+  implementation 'com.google.inject:guice:5.1.0'
+  implementation 'com.google.inject.extensions:guice-servlet:5.1.0'
   implementation 'com.google.code.gson:gson:2.8.0'
   implementation 'com.google.auto.value:auto-value-annotations:1.6.2'
-  implementation 'io.grpc:grpc-protobuf:1.44.1'
-  implementation 'io.grpc:grpc-stub:1.44.1'
-  implementation 'io.grpc:grpc-netty:1.44.1'
+  implementation 'io.grpc:grpc-protobuf:1.46.0'
+  implementation 'io.grpc:grpc-stub:1.46.0'
+  implementation 'io.grpc:grpc-netty:1.46.0'
   implementation 'javax.ws.rs:jsr311-api:1.1.1'
   implementation 'com.google.protobuf:protobuf-java:3.17.3'
   implementation 'com.google.protobuf:protobuf-java-util:3.17.3'
@@ -72,7 +72,7 @@ dependencies {
   implementation 'io.netty:netty-tcnative-boringssl-static:2.0.49.Final'
   annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
 
-  testImplementation 'junit:junit:4.12'
+  testImplementation 'junit:junit:4.13.2'
   testImplementation 'com.google.truth:truth:1.1.3'
   testImplementation 'org.mockito:mockito-all:1.10.19'
   testImplementation 'org.springframework:spring-core:5.3.10'

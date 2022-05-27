@@ -95,6 +95,12 @@ The response is plain-text output of the created entities.
 Updates the manifest for the given vehicle ID. This endpoint is also used to
 assign an unassigned manifest to a vehicle.
 
+Note: this would ideally be done with the `PATCH` method, rather than `POST`.
+However, the sample backend is implemented with
+[Java’s HttpServlet](https://javaee.github.io/javaee-spec/javadocs/javax/servlet/http/HttpServlet.html)
+which does not support `PATCH`. As such, for this operation, updates are
+supported via `POST`.
+
 **Request**
 
 Params                          | Type            | Description
@@ -131,6 +137,12 @@ The response is a `DeliveryConfig.Manifest` for the given `vehicle_id`. See
 #### `POST /task/:id`
 
 Updates the task with the given ID.
+
+Note: this would ideally be done with the `PATCH` method, rather than `POST`.
+However, the sample backend is implemented with
+[Java’s HttpServlet](https://javaee.github.io/javaee-spec/javadocs/javax/servlet/http/HttpServlet.html)
+which does not support `PATCH`. As such, for this operation, updates are
+supported via `POST`.
 
 **Request**
 
@@ -249,7 +261,7 @@ typedef Manifest = {
     // The provider ID of the customer, which is the GCP project ID. Ignored if
     // specified in the delivery configuration file; will be filled in for
     // /manifest calls.
-    provider_id?: string,
+    provider_id: string,
 
     // (Optional) Where the vehicle is located initially for simulation.
     start_location?: Waypoint,

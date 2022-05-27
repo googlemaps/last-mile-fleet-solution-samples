@@ -1,0 +1,6 @@
+*.framework/
+*.xcworkspace/
+xcuserdata/
+xcuserdatad/
+gRPCCertificates.bundle/
+LMFSDriverSampleApp/.DS_Store

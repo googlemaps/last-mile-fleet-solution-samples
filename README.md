@@ -32,8 +32,8 @@ There are three main pieces to the sample applications:
         using the Driver, Navigation, and Maps SDKs, which can be compiled and
         run on iOS devices or simulators.
 
-        The iOS Driver app will be available soon, and will be contained in the
-        `ios_driverapp_samples` directory.
+        The iOS Driver app is contained in the `ios_driverapp_samples`
+        directory.
 
 1.  Web apps:
 
@@ -124,9 +124,8 @@ driver to perform the following actions:
 -   Mark tasks as complete.
 
 For details on the setup and usage of the mobile app, refer to the
-[Android](android_driverapp_samples/README.md)
-<!-- or [iOS](ios_driverapp_samples/README.md) -->
-mobile driver app README. The iOS mobile app will be made available soon.
+[Android](android_driverapp_samples/README.md) and
+[iOS](ios_driverapp_samples/README.md) mobile driver app README files.
 
 ### Web apps
 

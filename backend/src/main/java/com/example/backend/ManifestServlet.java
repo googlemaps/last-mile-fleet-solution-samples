@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,13 +98,18 @@ public final class ManifestServlet extends HttpServlet {
    *       Assignment is an exclusive operation, and cannot be done in the same request as any of
    *       the other updates.
    *   <li>update of the vehicle's stop state, by setting current_stop_state in the body.
-   *   <li>(to be implemented) marking the vehicle's current stop as complete, by setting
-   *       remaining_stop_id_list to a new list which is shorter than the previous version. This
-   *       updates the state of all tasks associated with the stop(s) that were removed from the
-   *       list as CLOSED. The outcomes of those tasks are unaffected.
-   *   <li>(to be implemented) reordering the vehicle's sequence of stops, by reordering the stop
-   *       IDs in remaining_stop_id_list.
+   *   <li>marking the vehicle's current stop as complete, by setting remaining_stop_id_list to a
+   *       new list which is shorter than the previous version. This updates the state of all tasks
+   *       associated with the stop(s) that were removed from the list as CLOSED. The outcomes of
+   *       those tasks are unaffected.
+   *   <li>reordering the vehicle's sequence of stops, by reordering the stop IDs in
+   *       remaining_stop_id_list.
    * </ul>
+   *
+   * <p>Note: this would ideally be done with the PATCH method, rather than POST. However, the
+   * sample backend is implemented with Java's HttpServlet
+   * (https://javaee.github.io/javaee-spec/javadocs/javax/servlet/http/HttpServlet.html) which does
+   * not support PATCH. As such, for this operation, updates are supported via POST.
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {

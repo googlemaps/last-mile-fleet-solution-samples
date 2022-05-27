@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
       this.vehicleStartLocation = new LatLng(vehicleConfig.startLocation().latitude(),
           vehicleConfig.startLocation().longitude());
     }
-    this.providerId = preferences.getProviderId();
+    this.providerId = vehicleConfig.providerId();
     backend.setVehicleId(vehicleId);
     deliveryManager.setDeliveryBackend(backend, providerId);
     deliveryManager.setupUntrustedDelivery(config);
