@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -73,7 +73,7 @@ public class DeliveryManager {
   @Nullable private DeliveryBackend backend;
   /** The config object should only be used as a reference to fill fields returned by backend. */
   @Nullable private DeliveryConfig config;
-  /** The backend id. */
+  /** The provider id. */
   private String providerId;
 
   private List<String> remainingStopIds;

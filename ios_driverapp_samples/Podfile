@@ -1,0 +1,14 @@
+source 'https://cpdc-eap.googlesource.com/ridesharing-driver-sdk.git'
+source 'https://cpdc-eap.googlesource.com/geo-nav-sdk.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'LMFSDriverSampleApp' do
+  project 'LMFSDriverSampleApp'
+  platform :ios, '15.0'
+
+  pod 'GoogleRidesharingDriver'
+
+  # The sample apps are written in SwiftUI, so they depend on
+  # a bug fix made in GoogleNavigation 3.1.1.
+  pod 'GoogleNavigation', '~> 3.1.1'
+end

@@ -7,6 +7,7 @@ in the backend documentation.
 
 ## Prerequisites
  - Python 3.7 or above
+ - The [pytz](https://pypi.org/project/pytz/) package installed
 
 ## Usage
 

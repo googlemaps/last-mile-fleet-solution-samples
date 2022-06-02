@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,10 @@
 package com.google.mapsplatform.transportation.delivery.sample.driver.domain.vehicle;
 
 import com.google.auto.value.AutoValue;
-import com.google.mapsplatform.transportation.delivery.sample.driver.domain.common.WaypointConfig;
 import com.google.gson.Gson;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.SerializedName;
+import com.google.mapsplatform.transportation.delivery.sample.driver.domain.common.WaypointConfig;
 import javax.annotation.Nullable;
 
 /** Representation of a delivery vehicle configuration. */
@@ -29,7 +29,6 @@ public abstract class DeliveryVehicleConfig {
   public abstract String vehicleId();
 
   @SerializedName("provider_id")
-  @Nullable
   public abstract String providerId();
 
   @SerializedName("start_location")
@@ -56,9 +55,9 @@ public abstract class DeliveryVehicleConfig {
     public abstract Builder setVehicleId(String value);
 
     /**
-     * Sets the backend id.
+     * Sets the provider id.
      *
-     * @param value Google cloud backend id.
+     * @param value Provider id.
      */
     public abstract Builder setProviderId(String value);
 

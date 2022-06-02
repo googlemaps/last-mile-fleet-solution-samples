@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright 2020 Google LLC
+<!-- Copyright 2022 Google LLC
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -71,26 +71,6 @@
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent" />
       </androidx.constraintlayout.widget.ConstraintLayout>
-
-      <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:orientation="vertical"
-          android:gravity="center">
-        <TextView
-            android:text="@string/provider_id"
-            android:textSize="18sp"
-            android:gravity="center_vertical"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height" />
-        <EditText
-            android:id="@+id/provider_id_input"
-            android:inputType="text|textUri"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/fragment_header_height"
-            android:layout_marginTop="-24dp"
-            android:hint="@string/provider_id_hint" />
-      </LinearLayout>
 
       <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
           android:layout_width="match_parent"

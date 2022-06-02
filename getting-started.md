@@ -19,21 +19,42 @@ This document assumes the following:
 -   You have a working Google Cloud project that has been granted access for
     LMFS and related APIs, and followed the
     [Authentication and Authorization](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/auth)
-    guide.
+    guide. You should enable the following services on your Google Cloud project:
 
--   You have created service accounts and API keys that will be used in the rest
-    of this document. Refer to the
-    [Initial setup](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/deliveries_api#initial_setup)
-    guide for details on the initial Google Cloud setup.
+    -   [Local Rides and Deliveries API](https://console.cloud.google.com/apis/library/fleetengine.googleapis.com)
+    -   Maps
+        [SDK for Android](https://console.cloud.google.com/apis/library/maps-android-backend.googleapis.com),
+        [SDK for iOS](https://console.cloud.google.com/apis/library/maps-ios-backend.googleapis.com)
+        and
+        [JavaScript API](https://console.cloud.google.com/apis/library/maps-backend.googleapis.com)
+    -   [Navigation SDK](https://console.cloud.google.com/apis/library/navigationsdkusage.googleapis.com)
+    -   [Identity and Access Management (IAM) API](https://console.cloud.google.com/apis/library/iam.googleapis.com)
+        and
+        [IAM Service Account Credentials API](https://console.cloud.google.com/apis/library/iamcredentials.googleapis.com)
+
+-   You have created the following service accounts. Setup
+    [instructions](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/auth#creating_a_service_account).
+
+    -   A Driver service account with the roles "Fleet Engine Delivery Driver"
+        and "Service Account Token Creator"
+    -   A Consumer service account with the roles "Fleet Engine Delivery
+        Consumer" and "Service Account Token Creator"
+    -   A Server service account with the roles "Fleet Engine Delivery Super
+        User" and "Service Account Token Creator"
+    -   A Fleet Reader service account with the roles "Fleet Engine Fleet
+        Reader" and "Service Account Token Creator"
+
+-   You have created API Keys. Setup
+    [instructions](https://developers.google.com/maps/documentation/javascript/get-api-key).
 
 This document requires the use of the following pieces of information:
 
 -   `PROJECT_ID`: The Google Cloud project ID.
 -   `ANDROID_API_KEY`: An API key that can be used from Android. This key should
-    be able to access the Driver, Navigation, and Maps SDKs.
+    be able to access the Navigation and Maps SDKs for Android.
     -   Required only if you will build and run the Android application.
 -   `IOS_API_KEY`: An API key that can be used from iOS. This key should
-    be able to access the Driver, Navigation, and Maps SDKs.
+    be able to access the Navigation and Maps SDK for iOS.
     -   Required only if you will build and run the iOS application.
 -   `JS_API_KEY`: An API key that can be used from web applications. This key
     should be able to access the Maps JavaScript API.
@@ -64,7 +85,8 @@ This document requires the use of the following pieces of information:
     ```
 
     You will be prompted to sign into your Google account and grant access to
-    the Google Cloud SDK. Accept and continue.
+    the Google Cloud SDK. Accept and continue. The account you use must have the
+    "Service Account Token Creator" role on this project.
 
 1.  Enable your Google account to be used as Application Default Credentials.
     This should only be done in a testing scenario, not production!
@@ -184,9 +206,9 @@ not found` error.
 
 ### Import and start the mobile apps
 
-Follow the instructions in the
-[Android](android_driverapp_samples/README.md) <!-- or [iOS](ios_driverapp_samples/README.md) -->
-driver app readme file to import and start a mobile app.
+Follow the instructions in the [Android](android_driverapp_samples/README.md) or
+[iOS](ios_driverapp_samples/README.md) driver app README file to import and
+start a mobile app.
 
 ### Start the web app
 
@@ -210,5 +232,6 @@ delivery vehicle tracking.
         [Prerequisites](#prerequisites) section above.
 
 Other common issues are listed in the
-[Android](android_driverapp_samples/README.md#common-issues) <!-- [iOS](ios_driverapp_samples/README.md#common-issues) -->
-and [web](web-apps.md#common-issues) README files.
+[Android](android_driverapp_samples/README.md#common-issues),
+[iOS](ios_driverapp_samples/README.md#common-issues) and
+[web](web-apps.md#common-issues) README files.

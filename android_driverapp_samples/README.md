@@ -88,12 +88,13 @@ getting started documentation on
 1.  The first time the app is launched, click the "Settings" tab and update the
     settings:
 
-    -   Provider ID: update to your Cloud project ID.
     -   Backend URL: verify that this is the host of your backend, and that the
         port number matches the port forwarding rule you've created. If you
         started the backend server via the instructions in
         [Getting Started](../getting-started.md#start-the-backend-host), the
         backend URL is `http://localhost:8080`.
+    -   Client ID: this is a unique identifier for your app, and is randomly
+        generated upon app install. You can set an identifier of your choice.
 
     Then re-launch the app from Android Studio.
 
@@ -198,6 +199,7 @@ Fleet Engine.
 -   The app does not load the map, or does not start navigation.
 
     Ensure that there is a valid API key specified in
-    `src/main/AndroidManifest.xml`. The key must be able to access the Android
-    Driver, Navigation, and Maps SDKs. Setting a valid key is part of the `upload-configuration.sh` step in the
+    `src/main/AndroidManifest.xml`. The key must be able to access the
+    Navigation and Maps SDK for Android. Setting a valid key is part of the
+    `upload-configuration.sh` step in the
     [Getting Started guide](../getting-started.md).

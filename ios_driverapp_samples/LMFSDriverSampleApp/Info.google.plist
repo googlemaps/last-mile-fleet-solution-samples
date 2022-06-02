@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- This key makes the app launch fullscreen by specifying the launch
+	     behavior. It's only needed for blaze, since Xcode has project
+	     options for controlling this. -->
+	<key>UILaunchScreen</key>
+	<dict/>
+</dict>
+</plist>

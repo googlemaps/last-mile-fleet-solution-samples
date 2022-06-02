@@ -39,7 +39,7 @@
 -dontwarn okhttp3.internal.platform.ConscryptPlatform
 #okhttp end
 
-# Keep classes used by the gRPC client callinge GetTask on FleetEngine.
+# Keep classes used by the gRPC client calling GetTask on FleetEngine.
 # (Is -keepnames sufficient, allowing shrinking of unused classes?)
 -keep public class google.** implements com.google.protobuf.MessageLiteOrBuilder { *; }
 -keep public class com.google.type.** implements com.google.protobuf.MessageLiteOrBuilder { *; }
@@ -59,4 +59,3 @@
 -dontwarn junit.**
 -keep class org.junit.** { *; }
 -dontwarn org.junit.**
-

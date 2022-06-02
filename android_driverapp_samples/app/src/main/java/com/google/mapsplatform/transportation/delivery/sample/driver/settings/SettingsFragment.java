@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,22 +46,6 @@ public class SettingsFragment extends Fragment {
     simulationSwitch.setChecked(preferences.getSimulationSetting());
     simulationSwitch.setOnCheckedChangeListener(
         (buttonView, isChecked) -> preferences.saveSimulationSetting(isChecked));
-
-    EditText providerIdEditText = view.findViewById(R.id.provider_id_input);
-    providerIdEditText.setText(preferences.getProviderId(), TextView.BufferType.NORMAL);
-    providerIdEditText.addTextChangedListener(
-        new TextWatcher() {
-          @Override
-          public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-          @Override
-          public void onTextChanged(CharSequence s, int start, int before, int count) {}
-
-          @Override
-          public void afterTextChanged(Editable s) {
-            preferences.saveProviderId(s.toString());
-          }
-        });
 
     EditText backendUrlEditText = view.findViewById(R.id.backend_url_input);
     backendUrlEditText.setText(preferences.getBackendUrl(), TextView.BufferType.NORMAL);

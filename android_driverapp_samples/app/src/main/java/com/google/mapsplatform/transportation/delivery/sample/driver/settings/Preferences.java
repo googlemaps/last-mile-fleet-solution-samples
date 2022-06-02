@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -59,14 +59,6 @@ public class Preferences {
 
   public boolean getSimulationSetting() {
     return sharedPreferences.getBoolean(SIMULATION_KEY, true);
-  }
-
-  public void saveProviderId(String providerId) {
-    sharedPreferences.edit().putString(PROVIDER_ID_KEY, providerId).apply();
-  }
-
-  public String getProviderId() {
-    return sharedPreferences.getString(PROVIDER_ID_KEY, "");
   }
 
   public void saveBackendUrl(String backendUrl) {

@@ -1,4 +1,4 @@
-/* Copyright 2020 Google LLC
+/* Copyright 2022 Google LLC
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -55,6 +55,11 @@ public final class TaskServlet extends HttpServlet {
     this.grpcServiceProvider = grpcServiceProvider;
   }
 
+  /**
+   * Fetches a task.
+   *
+   * <p>GET /task/:taskId
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -171,6 +176,22 @@ public final class TaskServlet extends HttpServlet {
     }
   }
 
+  /**
+   * Updates a task.
+   *
+   * <p>POST /task/:taskId
+   *
+   * <p>Valid updates include:
+   *
+   * <ul>
+   *   <li>update of the task's outcome, by setting task_outcome in the body.
+   * </ul>
+   *
+   * <p>Note: this would ideally be done with the PATCH method, rather than POST. However, the
+   * sample backend is implemented with Java's HttpServlet
+   * (https://javaee.github.io/javaee-spec/javadocs/javax/servlet/http/HttpServlet.html) which does
+   * not support PATCH. As such, for this operation, updates are supported via POST.
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     if (request.getPathInfo() == null) {
