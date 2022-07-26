@@ -222,6 +222,8 @@ delivery vehicle tracking.
 
     The tests are designed to exercise the token-signing credential set up.
 
+    -   Verify that your user account has the `Service Account Token Creator
+        Role`, as described in the [Authentication and Authorization](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/auth#:~:text=Service%20Account%20Token%20Creator%20Role) guide.
     -   Verify that you have successfully authenticated against your Google
         Cloud project via the `gcloud` command, in
         [Step 1](#step-1-authenticate-with-gcloud) above.
