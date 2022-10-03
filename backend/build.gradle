@@ -67,7 +67,7 @@ dependencies {
   implementation 'io.grpc:grpc-netty:1.46.0'
   implementation 'javax.ws.rs:jsr311-api:1.1.1'
   implementation 'com.google.protobuf:protobuf-java:3.17.3'
-  implementation 'com.google.protobuf:protobuf-java-util:3.17.3'
+  implementation 'com.google.protobuf:protobuf-java-util:3.21.7'
   implementation 'javax.annotation:javax.annotation-api:1.2'
   implementation 'io.netty:netty-tcnative-boringssl-static:2.0.49.Final'
   annotationProcessor 'com.google.auto.value:auto-value:1.6.2'
