@@ -72,9 +72,10 @@ public final class ManifestServlet extends HttpServlet {
       return;
     }
     String vehicleId = request.getPathInfo().substring(1);
-    BackendConfig.Manifest manifest = servletState.getManifest(vehicleId);
+    String manifest = servletState.getManifestDS(vehicleId);
     if (manifest != null) {
-      responseWriter.print(BackendConfigGsonProvider.get().toJson(manifest));
+      //responseWriter.print(BackendConfigGsonProvider.get().toJson(manifest));
+      responseWriter.print(manifest);
       responseWriter.flush();
     } else {
       logger.log(
@@ -108,6 +109,8 @@ public final class ManifestServlet extends HttpServlet {
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
+        grpcServiceProvider.getAuthenticatedDeliveryService();
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     PrintWriter responseWriter = response.getWriter();
@@ -167,20 +170,18 @@ public final class ManifestServlet extends HttpServlet {
       }
       logger.log(Level.INFO, String.format("clientId is %s", clientId));
       try {
-        vehicle = assignVehicleToClient(clientId, vehicleId);
+         String assignedVehicleId = assignVehicleToClient(clientId, vehicleId);
+         String manifestJSON = servletState.getManifestDS(assignedVehicleId);
+         responseWriter.print(manifestJSON);
       } catch (ManifestException e) {
         logger.log(Level.WARNING, e.getLogMessage());
         ServletUtils.setErrorResponse(response, e.getErrorMessage(), e.getErrorCode());
-        return;
       }
-      BackendConfig.Manifest manifest =
-          servletState.getManifest(ServletState.getId(vehicle.getName()));
-      responseWriter.print(BackendConfigGsonProvider.get().toJson(manifest));
       return;
     }
 
     // Otherwise, a vehicleId is required.
-    vehicle = servletState.getDeliveryVehicleById(vehicleId);
+    vehicle = servletState.getDeliveryVehicleById(authenticatedDeliveryService, vehicleId);
     if (vehicle == null) {
       logger.log(
           Level.WARNING,
@@ -241,57 +242,28 @@ public final class ManifestServlet extends HttpServlet {
    * @return The assigned vehicle.
    * @throws ManifestException if the vehicle could not be assigned to the client.
    */
-  private DeliveryVehicle assignVehicleToClient(String clientId, String vehicleId)
+  private String  assignVehicleToClient(String clientId, String vehicleId)
       throws ManifestException {
-    // Assignment does not require a vehicleId; but if a vehicleId is supplied, attempt to use it.
-    String existingVehicleId = servletState.getDeliveryVehicleMapByClient(clientId);
     DeliveryVehicle vehicle;
+    String assignedVehicleId = vehicleId; 
 
-    if (existingVehicleId != null) {
-      // If the client is already assigned another vehicle...
-      if (!vehicleId.equals("") && !vehicleId.equals(existingVehicleId)) {
+    if (vehicleId.equals("")) {
+      assignedVehicleId = servletState.lookupAndAssignVehicle(clientId);
+      if (assignedVehicleId == null) {
         throw new ManifestException(
-            "The client attempted to re-request another vehicle",
-            "You cannot request different vehicles.",
-            403);
-      }
-
-      vehicle = servletState.getDeliveryVehicleById(existingVehicleId);
-      if (vehicle == null) {
-        throw new ManifestException(
-            "The client\'s assigned vehicle doesn't exist.",
-            "The requested vehicle doesn't exist.",
-            404);
-      }
-    } else if (vehicleId.equals("")) {
-      // If vehicleId is null, assign the next available vehicle
-      vehicle = servletState.getAnyAvailableDeliveryVehicle();
-      if (vehicle == null) {
-        throw new ManifestException(
-            "The client requested a vehicle for assignment, but none were available.",
+            "The client requested a vehicle matching " + clientId + " for assignment, but none were available.",
             "There are no available vehicles for assignment.",
             404);
       }
+      return assignedVehicleId;
     } else {
-      // If vehicleId is not null, attempt to assign that vehicle
-      vehicle = servletState.getDeliveryVehicleById(vehicleId);
-      if (vehicle == null) {
+      if (!servletState.isDeliveryVehicleAssigned(vehicleId)) {
         throw new ManifestException(
-            "The client attempted to request a non-existent vehicle",
-            "The requested vehicle doesn't exist.",
-            404);
-      }
-      if (servletState.isDeliveryVehicleAssigned(vehicleId)) {
-        throw new ManifestException(
-            "The client attempted to request a vehicle that is currently assigned",
-            "The requested vehicle is currently assigned.",
+            "The client attempted to request a non-existent/assigned vehicle", "Invalid vehicleID",
             403);
       }
+       return vehicleId;
     }
-
-    // We have a vehicle available for assignment, or is already assigned to the same vehicle.
-    servletState.addClientToDeliveryVehicleMap(clientId, vehicle);
-    return vehicle;
   }
 
   /**
@@ -304,6 +276,8 @@ public final class ManifestServlet extends HttpServlet {
    */
   private DeliveryVehicle updateVehicleStopState(DeliveryVehicle vehicle, String stopStateName)
       throws ManifestException {
+    String vehicleId = ServletState.getId(vehicle.getName());
+    BackendConfig.Manifest manifest = servletState.getManifest(vehicleId);
     VehicleStop.State state;
     switch (stopStateName) {
       case "STATE_UNSPECIFIED":
@@ -337,14 +311,14 @@ public final class ManifestServlet extends HttpServlet {
         grpcServiceProvider.getAuthenticatedDeliveryService();
     DeliveryVehicle responseVehicle = authenticatedDeliveryService.updateDeliveryVehicle(updateReq);
     servletState.addDeliveryVehicle(responseVehicle);
-    String vehicleId = ServletState.getId(vehicle.getName());
     BackendConfig.StopState backendConfigStopState = BackendConfig.StopState.of(stopStateName);
     logger.log(
         Level.INFO,
         String.format(
             "updating manifest with vehicle ID %s and stop state %s",
             vehicleId, backendConfigStopState.getValue()));
-    servletState.getManifest(vehicleId).currentStopState = backendConfigStopState;
+    manifest.currentStopState = backendConfigStopState;
+    servletState.updateManifest(manifest);
 
     return responseVehicle;
   }
@@ -397,6 +371,8 @@ public final class ManifestServlet extends HttpServlet {
     servletState.addDeliveryVehicle(responseVehicle);
 
     manifest.remainingStopIdList = stopIds.toArray(new String[0]);
+    servletState.updateManifest(manifest);
+
     return responseVehicle;
   }
 

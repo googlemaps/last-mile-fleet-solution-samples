@@ -44,7 +44,7 @@
 
     <meta-data
         android:name="com.google.android.geo.API_KEY"
-        android:value="AIzaSyBzrZvnYrnNFmthWSe32gnOqYVMedyEIIc"/>
+        android:value="*****UPDATE_WITH_ANDROID_API_KEY*****"/>
 
     <!-- https://issuetracker.google.com/issues/79478779 -->
     <uses-library android:name="org.apache.http.legacy" android:required="false"/>

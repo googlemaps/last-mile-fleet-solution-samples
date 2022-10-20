@@ -16,6 +16,8 @@
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
   <runtime>java11</runtime>
   <application>YOUR-APPID-HERE</application>
+  <app-engine-apis>true</app-engine-apis>
+  <instance-class>F4</instance-class>
   <version>1</version>
 
   <!-- Keep your application thread-safe and you can have multiple responding

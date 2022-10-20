@@ -23,6 +23,25 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Singleton;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Text;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.example.backend.json.BackendConfigGsonProvider;
+import com.example.backend.auth.grpcservice.AuthenticatedGrpcServiceProvider;
+import google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
+import google.maps.fleetengine.delivery.v1.GetTaskRequest;
+import google.maps.fleetengine.delivery.v1.GetDeliveryVehicleRequest;
+import com.example.backend.utils.TaskUtils;
+import com.example.backend.utils.VehicleUtils;
+import google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
 
 /**
  * Shared state among the servlets.
@@ -39,21 +58,27 @@ class ServletState {
   private HashMap<String, Task> tasks;
   private HashMap<String, DeliveryVehicle> deliveryVehicles;
   private HashMap<String, String> clientToDeliveryVehicleMapping;
+  private DatastoreService datastore;
 
   public ServletState() {
     this.tasks = new HashMap<>();
     this.deliveryVehicles = new HashMap<>();
     this.clientToDeliveryVehicleMapping = new HashMap<>();
+    this.datastore = DatastoreServiceFactory.getDatastoreService();
   }
 
   /** Adds a delivery vehicle into the servlet state. */
   public synchronized void addDeliveryVehicle(DeliveryVehicle deliveryVehicle) {
-    this.deliveryVehicles.put(getId(deliveryVehicle.getName()), deliveryVehicle);
+    //this.deliveryVehicles.put(getId(deliveryVehicle.getName()), deliveryVehicle);
   }
 
   /** Retrieves a delivery vehicle by ID. Null if vehicle ID doesn't match any vehicle. */
-  public synchronized DeliveryVehicle getDeliveryVehicleById(String vehicleId) {
-    return deliveryVehicles.get(vehicleId);
+  public synchronized DeliveryVehicle getDeliveryVehicleById(DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService, 
+        String vehicleId) {
+      // TODO: need to prepend provide//... stuf
+      GetDeliveryVehicleRequest req =
+          GetDeliveryVehicleRequest.newBuilder().setName(VehicleUtils.getVehicleNameFromId(vehicleId)).build();
+      return authenticatedDeliveryService.getDeliveryVehicle(req);
   }
 
   /**
@@ -61,63 +86,129 @@ class ServletState {
    * overwritten.
    */
   public synchronized void addTask(Task task) {
-    this.tasks.put(getId(task.getName()), task);
+    //this.tasks.put(getId(task.getName()), task);
   }
 
   /** Retrieves a task by ID. Null if task ID doesn't match any task. */
-  public synchronized Task getTaskById(String taskId) {
-    return tasks.get(taskId);
+  public synchronized Task getTaskById(DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService, String taskId) {
+      // Fetch the task from Fleet Engine, just in case.
+      GetTaskRequest req =
+          GetTaskRequest.newBuilder().setName(TaskUtils.getTaskNameFromId(taskId)).build();
+      return authenticatedDeliveryService.getTask(req);
   }
 
-  /**
-   * Adds a client into the assignment list. The client is the courier servicing this set of tasks.
-   */
-  public synchronized void addClientToDeliveryVehicleMap(String clientId, DeliveryVehicle vehicle) {
-    String vehicleId = getId(vehicle.getName());
-    if (!isDeliveryVehicleAssigned(vehicleId)) {
-      clientToDeliveryVehicleMapping.put(clientId, vehicleId);
-      getManifest(vehicleId).clientId = clientId;
-    }
+  public synchronized String lookupAndAssignVehicle(String clientIdentifier) {
+   Query q = new Query("VehicleManifest")
+        .setFilter(new FilterPredicate("clientIdentifier", FilterOperator.EQUAL, clientIdentifier));
+   PreparedQuery pq = datastore.prepare(q);
+   Entity vehicleManifest = pq.asSingleEntity();
+   if (vehicleManifest != null) {
+      String vehicleId = vehicleManifest.getKey().getName();
+      vehicleManifest.setProperty("assigned", true);
+      this.datastore.put(vehicleManifest);
+      return vehicleId;
+   } else {
+      return null;
+   }
   }
 
   /** Retrieves the vehicle mapped to a client. */
   public synchronized String getDeliveryVehicleMapByClient(String clientIdentifier) {
-    return clientToDeliveryVehicleMapping.get(clientIdentifier);
+   Query q = new Query("VehicleManifest")
+        .setFilter(new FilterPredicate("clientIdentifier", FilterOperator.EQUAL, clientIdentifier));
+   PreparedQuery pq = datastore.prepare(q);
+   Entity result = pq.asSingleEntity();
+   if (result != null) {
+      return result.getKey().getName();
+   } else {
+      return null;
+   }
   }
 
   /** Returns true if the vehicle is mapped to a client. */
   public synchronized boolean isDeliveryVehicleAssigned(String vehicleId) {
-    return clientToDeliveryVehicleMapping.containsValue(vehicleId);
+    try {
+       Key vehicleManifestKey = KeyFactory.createKey("VehicleManifest", vehicleId);
+       Entity vehicleManifest = this.datastore.get(vehicleManifestKey);
+       // TODO: is this just really has a clientIdentifier set ... I think so
+       Boolean assigned = (Boolean)vehicleManifest.getProperty("assigned");
+       return assigned;
+    } catch (EntityNotFoundException e) {
+       return false;
+    }
+    //return clientToDeliveryVehicleMapping.containsValue(vehicleId);
   }
+
 
   /** Retrieves any available (unassigned) vehicle. If all vehicles are assigned, returns null. */
   public synchronized DeliveryVehicle getAnyAvailableDeliveryVehicle() {
+    return null;
+    /*
     for (DeliveryVehicle vehicle : deliveryVehicles.values()) {
       if (!isDeliveryVehicleAssigned(getId(vehicle.getName()))) {
         return vehicle;
       }
     }
     return null;
+    */
   }
 
   public synchronized void setBackendConfig(BackendConfig backendConfig) {
     this.backendConfig = backendConfig;
+    for (BackendConfig.Manifest manifest : backendConfig.manifests) {
+      logger.log(Level.INFO, String.format("got manifest for %s", manifest.vehicle.vehicleId));
+      Entity vehicleManifest = new Entity("VehicleManifest", manifest.vehicle.vehicleId);
+      logger.log(Level.INFO, String.format("got key for %s", vehicleManifest.getKey().getName()));
+      vehicleManifest.setProperty("json", new Text(BackendConfigGsonProvider.get().toJson(manifest)));
+      vehicleManifest.setProperty("clientIdentifier", manifest.expectedClientId);
+      vehicleManifest.setProperty("assigned", false);
+      this.datastore.put(vehicleManifest);
+    }
+  }
+
+  public synchronized void updateManifest(BackendConfig.Manifest m) {
+    String vehicleId = m.vehicle.vehicleId;
+    logger.log(Level.INFO, String.format("Setting manifest for %s", vehicleId));
+    Key vehicleManifestKey = KeyFactory.createKey("VehicleManifest",vehicleId);
+    try {
+       Entity vehicleManifest = this.datastore.get(vehicleManifestKey);
+       vehicleManifest.setProperty("json", new Text(BackendConfigGsonProvider.get().toJson(m)));
+       this.datastore.put(vehicleManifest);
+    } catch (EntityNotFoundException e) {
+       logger.log(Level.WARNING, String.format("Failed to update manifest for %s", vehicleId));
+    }
   }
 
   public synchronized BackendConfig.Manifest getManifest(String vehicleId) {
     logger.log(Level.INFO, String.format("getting manifest for %s", vehicleId));
-    if (backendConfig == null) {
-      return null;
+    Key vehicleManifestKey = KeyFactory.createKey("VehicleManifest", vehicleId);
+    try {
+       Entity vehicleManifest = this.datastore.get(vehicleManifestKey);
+       if (vehicleManifest == null) {
+         logger.log(Level.INFO, String.format("no manifest found for %s", vehicleId));
+         return null;
+       }
+       Text manifestJSON = (Text)vehicleManifest.getProperty("json");
+       return BackendConfigGsonProvider.get().fromJson(manifestJSON.getValue(), BackendConfig.Manifest.class);
+    } catch (EntityNotFoundException e) {
+       return null;
     }
-    for (BackendConfig.Manifest manifest : backendConfig.manifests) {
-      if (manifest.vehicle.vehicleId.equals(vehicleId)) {
-        return manifest;
-      }
+  }
+
+  public synchronized String getManifestDS(String vehicleId) {
+    logger.log(Level.INFO, String.format("getting manifest for %s", vehicleId));
+    Key vehicleManifestKey = KeyFactory.createKey("VehicleManifest", vehicleId);
+    try {
+       Entity vehicleManifest = this.datastore.get(vehicleManifestKey);
+       Text manifestJSON = (Text)vehicleManifest.getProperty("json");
+       return manifestJSON.getValue();
+    } catch (EntityNotFoundException e) {
+       return null;
     }
-    return null;
   }
 
   public synchronized BackendConfig.Task getBackendConfigTask(String taskId) {
+    //TODO query database
     if (backendConfig == null) {
       return null;
     }
@@ -131,14 +222,15 @@ class ServletState {
     return null;
   }
 
-  public synchronized void removeBackendConfigTask(String taskId) {
-    for (BackendConfig.Manifest manifest : backendConfig.manifests) {
-      for (BackendConfig.Stop stop : manifest.stops) {
-        ArrayList<String> tasksList = new ArrayList<>(Arrays.asList(stop.tasks));
-        tasksList.remove(taskId);
-        stop.tasks = tasksList.toArray(new String[tasksList.size()]);
-      }
-    }
+  public synchronized void removeBackendConfigTask(String vehicleId, String taskId) {
+   logger.log(Level.INFO, String.format("Removing task %s from vehicle for %s", taskId, vehicleId));
+   BackendConfig.Manifest manifest = this.getManifest(vehicleId);
+   for (BackendConfig.Stop stop : manifest.stops) {
+     ArrayList<String> tasksList = new ArrayList<>(Arrays.asList(stop.tasks));
+     tasksList.remove(taskId);
+     stop.tasks = tasksList.toArray(new String[tasksList.size()]);
+   }
+   this.updateManifest(manifest);
   }
 
   /**

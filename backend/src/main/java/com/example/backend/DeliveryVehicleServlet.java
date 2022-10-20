@@ -66,7 +66,7 @@ public final class DeliveryVehicleServlet extends HttpServlet {
         return;
       }
       String vehicleId = request.getPathInfo().substring(1);
-      DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(vehicleId);
+      DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(deliveryService, vehicleId);
       if (vehicle != null) {
         ServletUtils.writeProtoJson(responseWriter, vehicle);
       } else {
@@ -81,6 +81,8 @@ public final class DeliveryVehicleServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DeliveryServiceGrpc.DeliveryServiceBlockingStub deliveryService =
+        grpcServiceProvider.getAuthenticatedDeliveryService();
     if (request.getPathInfo() == null) {
       logger.log(
           Level.WARNING,
@@ -90,7 +92,7 @@ public final class DeliveryVehicleServlet extends HttpServlet {
     }
     String vehicleId = request.getPathInfo().substring(1);
 
-    DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(vehicleId);
+    DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(deliveryService, vehicleId);
     if (vehicle == null) {
       logger.log(
           Level.WARNING,
@@ -160,13 +162,9 @@ public final class DeliveryVehicleServlet extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
     PrintWriter responseWriter = response.getWriter();
 
-    // As above, we're using the IP address to identify the client.
-    String clientIdentifier = request.getRemoteAddr();
-
     String vehicleId = request.getPathInfo().substring(1);
     DeliveryVehicle vehicle =
-        servletState.getDeliveryVehicleById(
-            servletState.getDeliveryVehicleMapByClient(clientIdentifier));
+        servletState.getDeliveryVehicleById(deliveryService, vehicleId);
 
     if (vehicle == null) {
       logger.log(Level.WARNING, "The client is not assigned to any vehicle");

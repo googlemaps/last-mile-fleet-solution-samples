@@ -66,7 +66,7 @@ public class Preferences {
   }
 
   public String getProviderId() {
-    return sharedPreferences.getString(PROVIDER_ID_KEY, "lmfs-field-day");
+    return sharedPreferences.getString(PROVIDER_ID_KEY, "<your project id>");
   }
 
   public void saveBackendUrl(String backendUrl) {
@@ -74,7 +74,7 @@ public class Preferences {
   }
 
   public String getBackendUrl() {
-    return sharedPreferences.getString(BACKEND_URL_KEY, "http://lmfs-field-day.uc.r.appspot.com");
+    return sharedPreferences.getString(BACKEND_URL_KEY, "http://<your app engine path.appspot.com>");
   }
 
   public void saveClientId(String clientId) {

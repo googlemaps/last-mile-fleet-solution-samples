@@ -255,7 +255,7 @@ public class NavigationActivity extends AppCompatActivity {
   public void onDestroy() {
     super.onDestroy();
     googleMap.clear();
-    vehicleReporter.disableLocationTracking();
+    //vehicleReporter.disableLocationTracking();
     DeliveryDriverApi.clearInstance();
     navigator.stopGuidance();
     navigator.getSimulator().unsetUserLocation();

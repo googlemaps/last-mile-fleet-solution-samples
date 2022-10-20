@@ -79,7 +79,7 @@ public final class TaskServlet extends HttpServlet {
         ServletUtils.setErrorResponse(response, "The vehicle ID must be specified.", 400);
         return;
       }
-      DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(vehicleId);
+      DeliveryVehicle vehicle = servletState.getDeliveryVehicleById(authenticatedDeliveryService, vehicleId);
       ArrayList<Task> tasks = new ArrayList<>();
       if (vehicle == null) {
         logger.log(Level.WARNING, "The client requested tasks for a non-existent vehicle.");
@@ -94,7 +94,7 @@ public final class TaskServlet extends HttpServlet {
           if (taskInfo.getTaskId().isEmpty()) {
             continue;
           }
-          Task task = servletState.getTaskById(taskInfo.getTaskId());
+          Task task = servletState.getTaskById(authenticatedDeliveryService, taskInfo.getTaskId());
           if (task == null) {
             continue;
           }
@@ -148,7 +148,7 @@ public final class TaskServlet extends HttpServlet {
         }
       }
 
-      Task task = servletState.getTaskById(taskId);
+      Task task = servletState.getTaskById(authenticatedDeliveryService, taskId);
       if (task == null) {
         logger.log(
             Level.WARNING,
@@ -173,6 +173,8 @@ public final class TaskServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
+        grpcServiceProvider.getAuthenticatedDeliveryService();
     if (request.getPathInfo() == null) {
       logger.log(Level.WARNING, "The client requested a task update but did not supply a taskId.");
       ServletUtils.setErrorResponse(response, "The task ID must be specified.", 400);
@@ -180,7 +182,7 @@ public final class TaskServlet extends HttpServlet {
     }
     String taskId = request.getPathInfo().substring(1);
 
-    Task task = servletState.getTaskById(taskId);
+    Task task = servletState.getTaskById(authenticatedDeliveryService, taskId);
     if (task == null) {
       logger.log(
           Level.WARNING,
@@ -227,14 +229,12 @@ public final class TaskServlet extends HttpServlet {
             .setUpdateMask(
                 FieldMask.newBuilder().addPaths("task_outcome").addPaths("task_outcome_time"))
             .build();
-    DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
-        grpcServiceProvider.getAuthenticatedDeliveryService();
     Task responseTask = authenticatedDeliveryService.updateTask(updateReq);
     servletState.addTask(responseTask);
 
     // The task has been marked as complete; remove it from the manifest.
     if (!outcome.equals(Task.TaskOutcome.TASK_OUTCOME_UNSPECIFIED)) {
-      servletState.removeBackendConfigTask(taskId);
+      servletState.removeBackendConfigTask(servletState.getId(responseTask.getDeliveryVehicleId()), taskId);
     }
 
     response.setContentType("application/json");
@@ -245,6 +245,8 @@ public final class TaskServlet extends HttpServlet {
 
   @Override
   public void doPut(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
+        grpcServiceProvider.getAuthenticatedDeliveryService();
     if (request.getServletPath().equals("/task")) {
       if (request.getPathInfo() == null) {
         logger.log(
@@ -255,7 +257,7 @@ public final class TaskServlet extends HttpServlet {
       String taskId = request.getPathInfo().substring(1);
 
       // Verify that the task exists in servletState.
-      Task task = servletState.getTaskById(taskId);
+      Task task = servletState.getTaskById(authenticatedDeliveryService, taskId);
 
       if (task == null) {
         logger.log(
@@ -284,8 +286,6 @@ public final class TaskServlet extends HttpServlet {
               .setTask(updatedTask)
               .setUpdateMask(FieldMask.newBuilder().addPaths("task_outcome"))
               .build();
-      DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
-          grpcServiceProvider.getAuthenticatedDeliveryService();
       Task responseTask = authenticatedDeliveryService.updateTask(updateReq);
       servletState.addTask(responseTask);
 

@@ -120,6 +120,7 @@ public final class BackendConfigServlet extends HttpServlet {
     // At this point, the backend config has been read into memory. Loop through its
     // contents and invoke the corresponding Fleet Engine APIs.
     for (BackendConfig.Manifest m : backendConfig.manifests) {
+      m.expectedClientId = m.vehicle.vehicleId;
       m.vehicle.vehicleId = BackendConfigUtils.getTimestampedId(m.vehicle.vehicleId);
 
       for (BackendConfig.Task t : m.tasks) {

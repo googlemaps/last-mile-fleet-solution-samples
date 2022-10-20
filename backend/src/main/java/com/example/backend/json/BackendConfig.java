@@ -60,6 +60,7 @@ public final class BackendConfig {
 
   public static class Manifest {
     public Vehicle vehicle;
+    public String expectedClientId;
     public Task[] tasks;
     public Stop[] stops;
 
