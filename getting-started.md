@@ -35,14 +35,15 @@ This document assumes the following:
 -   You have created the following service accounts. Setup
     [instructions](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/fleet-engine/auth#creating_a_service_account).
 
-    -   A Driver service account with the roles "Fleet Engine Delivery Driver"
-        and "Service Account Token Creator"
+    -   A Driver service account with the roles "Fleet Engine Delivery Trusted
+        Driver" or "Fleet Engine Delivery Untrusted Driver" and "Service Account
+        Token Creator"
     -   A Consumer service account with the roles "Fleet Engine Delivery
         Consumer" and "Service Account Token Creator"
     -   A Server service account with the roles "Fleet Engine Delivery Super
         User" and "Service Account Token Creator"
-    -   A Fleet Reader service account with the roles "Fleet Engine Fleet
-        Reader" and "Service Account Token Creator"
+    -   A Fleet Reader service account with the roles "Fleet Engine Delivery
+        Fleet Reader" and "Service Account Token Creator"
 
 -   You have created API Keys. Setup
     [instructions](https://developers.google.com/maps/documentation/javascript/get-api-key).

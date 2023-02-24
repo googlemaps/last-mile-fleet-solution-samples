@@ -15,6 +15,7 @@
 package com.example.backend;
 
 import static com.google.common.truth.Truth.assertThat;
+import static java.nio.charset.StandardCharsets.UTF_8;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -93,7 +94,7 @@ public class TaskServletTest {
     request.setMethod("POST");
     request.setServletPath("/task");
     request.setPathInfo("/" + testBackendConfigServletProvider.taskId);
-    request.setContent("{\"task_outcome\"=\"SUCCEEDED\"}".getBytes());
+    request.setContent("{\"task_outcome\"=\"SUCCEEDED\"}".getBytes(UTF_8));
     servlet.service(request, response);
     assertThat(response.getStatus()).isEqualTo(200);
   }

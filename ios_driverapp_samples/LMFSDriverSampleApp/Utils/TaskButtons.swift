@@ -44,19 +44,19 @@ struct TaskButtons: View {
           },
           label: {
             Text(task.unsuccessfulActionName)
-              .foregroundColor(Color.blue)
+              .foregroundColor(.blue)
           }
         )
         .buttonStyle(.borderless)
 
       case .completed:
         Text("Completed")
-          .foregroundColor(Color.gray)
+          .foregroundColor(.gray)
           .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
 
       case .couldNotComplete:
         Text("Could not complete")
-          .foregroundColor(Color.gray)
+          .foregroundColor(.gray)
 
       }
 

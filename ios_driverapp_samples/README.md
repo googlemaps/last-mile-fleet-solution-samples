@@ -30,6 +30,9 @@ workstation. Ensure these are installed before proceeding.
 -   The `gcloud` command line utility for Google Cloud
     ([instructions](https://cloud.google.com/sdk/docs/install))
 
+You also need to
+[get access to the Driver SDK for iOS](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/driver-sdk/driver_sdk_quickstart_ios#get_access).
+
 ## Setup
 
 Once you met all prerequisites above, follow these steps for setup.

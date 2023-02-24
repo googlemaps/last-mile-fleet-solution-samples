@@ -117,4 +117,5 @@ public final class BackendConfigUtils {
     }
   }
 
+  private BackendConfigUtils() {}
 }

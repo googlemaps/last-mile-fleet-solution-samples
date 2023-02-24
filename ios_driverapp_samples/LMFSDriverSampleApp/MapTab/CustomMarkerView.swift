@@ -32,7 +32,7 @@ class CustomMarkerView: UIView {
     setupViews()
   }
 
-  func setupViews() {
+  private func setupViews() {
     let imageView = UIImageView(image: image)
     imageView.translatesAutoresizingMaskIntoConstraints = false
     addSubview(imageView)

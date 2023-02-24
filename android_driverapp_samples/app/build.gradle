@@ -85,8 +85,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.android.maps:navsdk:3.2.0'
-    implementation 'com.google.android.libraries.mapsplatform.transportation:transportation-driver:4.0.0'
+    implementation 'com.google.android.libraries.mapsplatform.transportation:transportation-driver:4.+'
 
     // And dependencies.
     implementation "androidx.appcompat:appcompat:${androidxVersion}"

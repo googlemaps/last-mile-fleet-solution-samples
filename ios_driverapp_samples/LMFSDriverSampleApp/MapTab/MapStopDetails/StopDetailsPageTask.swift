@@ -62,7 +62,7 @@ struct StopDetailsPageTask: View {
 struct StopDetailsPageTask_Previews: PreviewProvider {
   static var previews: some View {
     let _ = LMFSDriverSampleApp.googleMapsInited
-    let modelData = ModelData.init(filename: "test_manifest")
+    let modelData = ModelData(filename: "test_manifest")
     let stop = modelData.stops[0]
     StopDetailsPageTask(stop: stop, task: stop.tasks[0])
       .previewLayout(.sizeThatFits)

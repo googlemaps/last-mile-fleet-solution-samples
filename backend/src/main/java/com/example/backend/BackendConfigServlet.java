@@ -14,6 +14,7 @@
  */
 package com.example.backend;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.Arrays.stream;
 
 import com.example.backend.auth.grpcservice.AuthenticatedGrpcServiceProvider;
@@ -99,7 +100,7 @@ public final class BackendConfigServlet extends HttpServlet {
 
   public void serveUpload(InputStream fileContent, HttpServletResponse response)
       throws IOException {
-    InputStreamReader reader = new InputStreamReader(fileContent);
+    InputStreamReader reader = new InputStreamReader(fileContent, UTF_8);
     BackendConfig backendConfig;
 
     Gson gson = BackendConfigGsonProvider.get();

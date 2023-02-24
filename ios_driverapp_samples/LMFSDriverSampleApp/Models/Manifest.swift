@@ -20,7 +20,7 @@ import Foundation
 /// This is essentially a workaround for the fact that the .iso8601 method of DateFormatter
 /// does not support fractional seconds.
 extension DateFormatter {
-  static let iso8601Full: DateFormatter = {
+  fileprivate static let iso8601Full: DateFormatter = {
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZZZZZ"
     formatter.calendar = Calendar(identifier: .iso8601)
@@ -63,7 +63,7 @@ struct Manifest: Hashable, Codable {
     remainingStopIdList = [String]()
   }
 
-  /// Initializer to read a manifset from a url
+  /// Initializer to read a manifest from a url
   static func loadFrom(url: URL) throws -> Manifest {
     return try loadFrom(data: Data(contentsOf: url))
   }

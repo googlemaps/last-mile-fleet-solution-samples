@@ -19,7 +19,7 @@ import SwiftUI
 /// The SwiftUI view which wraps the NavViewController UIViewController.
 struct NavViewControllerBridge: UIViewControllerRepresentable {
   /// The instance of location manager to use for request Always permission.
-  private var locationManager: CLLocationManager
+  private let locationManager: CLLocationManager
 
   /// The ModelData containing the primary state of the application.
   @EnvironmentObject var modelData: ModelData
