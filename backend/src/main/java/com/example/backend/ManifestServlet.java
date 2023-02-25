@@ -302,9 +302,6 @@ public final class ManifestServlet extends HttpServlet {
   /**
    * Updates the vehicle stop state.
    *
-   * @param vehicle
-   * @param stopStateName
-   * @return
    * @throws ManifestException If the update fails.
    */
   private DeliveryVehicle updateVehicleStopState(DeliveryVehicle vehicle, String stopStateName)

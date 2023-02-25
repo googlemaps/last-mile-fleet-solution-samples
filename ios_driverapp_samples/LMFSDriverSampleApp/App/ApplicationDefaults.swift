@@ -15,7 +15,7 @@
 import Foundation
 import UIKit
 
-/// This class holds persistent app settings.
+/// This enum holds persistent app settings.
 ///
 /// When getting a value, the value may come from one of three sources:
 /// * If in a previous run of the application, an explicit value was set, that value will be
@@ -24,31 +24,31 @@ import UIKit
 ///   provided in that file is compatible with the type declared for the value, that value will be
 ///   returned.
 /// * Otherwise the programmatic default value listed below will be returned.
-struct ApplicationDefaults {
+enum ApplicationDefaults {
   /// The Google Maps API Key matching the bundleID of this app.
-  static var apiKey: Value<String> = Value(
+  static let apiKey: Value<String> = Value(
     key: "apiKey",
     defaultValue: "***This value must be configured, either in code or via a local override***")
 
   /// The URL for requests to the backend.
-  static var backendBaseURLString: Value<String> = Value(
+  static let backendBaseURLString: Value<String> = Value(
     key: "backendBaseURL",
     defaultValue: "http://localhost:8080")
 
   /// Whether we should disable using simulated location when navigation.
   ///
   /// If this is disabled, the real device location will be used.
-  static var disableLocationSimulation: Value<Bool> = Value(
+  static let disableLocationSimulation: Value<Bool> = Value(
     key: "disableLocationSimulation",
     defaultValue: false)
 
   /// Whether we should disable reporting location via DriverSDK.
-  static var disableLocationReporting: Value<Bool> = Value(
+  static let disableLocationReporting: Value<Bool> = Value(
     key: "disableLocationReporting",
     defaultValue: false)
 
   /// Client ID to use when contacting the backend.
-  static var clientId: Value<String> = Value(
+  static let clientId: Value<String> = Value(
     key: "clientId",
     /// Try to use the vendor ID as it is stable across app launches; use UUID as a backup if
     /// vendor ID is not available.
@@ -59,9 +59,9 @@ struct ApplicationDefaults {
   /// T must be a class which is representable in UserDefaults; see Apple documentation.
   class Value<T> {
     /// The key for storing this value in userDefaults.
-    private var key: String
+    private let key: String
     /// The UserDefaults instance to persist this value in.
-    private var defaults: UserDefaults
+    private let defaults: UserDefaults
 
     init(key: String, defaults: UserDefaults = .standard, defaultValue: T) {
       self.key = key
@@ -101,7 +101,7 @@ struct ApplicationDefaults {
   ///
   /// See the README.md file in the LocalOverrides directory for more information on the
   /// LocalOverrides mechanism.
-  private static var localOverrides: [String: Any] = readLocalOverrides()
+  private static let localOverrides: [String: Any] = readLocalOverrides()
 
   /// Static function to read a JSON-format file that allows locally overriding the default values
   /// for any application defaults setting.

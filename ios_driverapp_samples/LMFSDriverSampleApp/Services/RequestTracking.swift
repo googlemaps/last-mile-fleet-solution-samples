@@ -16,7 +16,7 @@ import Combine
 import Foundation
 
 /// The error returned in a callback from a `RequestTracking` implementation.
-public enum RequestTrackingError: Error, Equatable, CustomStringConvertible {
+enum RequestTrackingError: Error, Equatable, CustomStringConvertible {
   /// This error indicates two requests with the same identifier have been started but not
   /// completed. The tracker requires all requests to have a unique identifier. If it is valid to
   /// have multiple identical requests, consider adding a timestamp to the request identifier.
@@ -31,7 +31,7 @@ public enum RequestTrackingError: Error, Equatable, CustomStringConvertible {
   /// The associated value is a human-readable representation of the request identifier.
   case unknownIdentifier(String)
 
-  public var description: String {
+  var description: String {
     switch self {
     case .duplicateRequestIdentifier(let identifier, _):
       return "Duplicate task update \(identifier) started."
@@ -94,12 +94,12 @@ protocol RequestTracking {
 }
 
 /// Implementation of RequestTracking that tracks requests in memory.
-public class InMemoryRequestTracker<RequestIdentifier: Hashable>: RequestTracking {
+class InMemoryRequestTracker<RequestIdentifier: Hashable>: RequestTracking {
   /// The type for error handlers for this class.
-  public typealias ErrorHandler = (RequestTrackingError) -> Void
+  typealias ErrorHandler = (RequestTrackingError) -> Void
 
   /// A handler which will be called if errors are detected.
-  public var errorHandler: ErrorHandler = { _ in }
+  var errorHandler: ErrorHandler = { _ in }
 
   /// Optional block to be notified when a new request is about to be tracked.
   var willInsertBlock: ((RequestIdentifier) -> Void)?
@@ -110,19 +110,19 @@ public class InMemoryRequestTracker<RequestIdentifier: Hashable>: RequestTrackin
   /// The serial dispatch queue on which the request tracker performs work. All calls
   /// to `.started()` or `.completed()` may enqueue activity on this queue.
   /// Exposed for the sake of testing.
-  public let serialQueue: DispatchQueue = DispatchQueue.main
+  let serialQueue: DispatchQueue = DispatchQueue.main
 
   /// Dictionary mapping the request identifier to the cancellable for the request.
   private var requests: [RequestIdentifier: AnyCancellable] = [:]
 
-  public var count: Int {
+  var count: Int {
     return requests.count
   }
 
   /// The maximum allowable number of pending requests. See `init`.
-  public let requestLimit: Int
+  let requestLimit: Int
 
-  public func started(identifier: RequestIdentifier, cancellable: AnyCancellable) {
+  func started(identifier: RequestIdentifier, cancellable: AnyCancellable) {
     serialQueue.async {
       if self.requests[identifier] != nil {
         // If a request with the same identifier has already been passed to `.started()`, this is
@@ -149,7 +149,7 @@ public class InMemoryRequestTracker<RequestIdentifier: Hashable>: RequestTrackin
     }
   }
 
-  public func completed(identifier: RequestIdentifier) {
+  func completed(identifier: RequestIdentifier) {
     serialQueue.async {
       if self.requests.removeValue(forKey: identifier) == nil {
         // No tracked request was found, so call the error handler.

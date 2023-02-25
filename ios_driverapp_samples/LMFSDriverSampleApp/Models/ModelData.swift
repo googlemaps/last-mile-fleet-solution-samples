@@ -85,7 +85,7 @@ final class ModelData: ObservableObject {
   /// The lazily-initialized GMTDVehicleReporterListener implementation for this application.
   ///
   /// This object should be added as a listener to any GMTDVehicleReporters created.
-  lazy public var vehicleReporterListener = VehicleReporterListener()
+  lazy var vehicleReporterListener = VehicleReporterListener()
 
   /// The read-only manifest from which the current itinerary was derived.
   ///
@@ -94,10 +94,10 @@ final class ModelData: ObservableObject {
   @Published var manifest: Manifest
 
   /// The service for access to tokens fetched from the Backend.
-  public lazy var accessTokenProvider = AccessTokenProvider()
+  lazy var accessTokenProvider = AccessTokenProvider()
 
   /// The service manager which deals with network requests.
-  public lazy var networkServiceManager: NetworkServiceManager = NetworkServiceManager()
+  lazy var networkServiceManager: NetworkServiceManager = NetworkServiceManager()
 
   /// A map of tasks based on their taskId.
   ///
@@ -419,7 +419,7 @@ final class ModelData: ObservableObject {
     }
 
     /// Sometimes there is a need to designate the tasks within a stop using letter (to avoid
-    /// confusion with numbers for stops). We arbitarily map them to alphabetic characters.
+    /// confusion with numbers for stops). We arbitrarily map them to alphabetic characters.
     static private let sequenceOptions = Array("ABCDEFGHIJKLMNOIPQRSTUVWXYZ")
     var sequenceString: String {
       let safeIndex = min(sequence, Task.sequenceOptions.count - 1)

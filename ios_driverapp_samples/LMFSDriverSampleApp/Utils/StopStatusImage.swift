@@ -16,9 +16,9 @@ import SwiftUI
 
 extension Color {
   /// Colors for the UI. Written in designer-friendly 255 notation.
-  static var stopStatusGreen = Color(.sRGB, red: 52.0 / 255, green: 168.0 / 255, blue: 83.0 / 255)
-  static var stopStatusYellow = Color(.sRGB, red: 242.0 / 255, green: 153.0 / 255, blue: 0.0 / 255)
-  static var stopStatusBlue = Color(.sRGB, red: 69.0 / 255, green: 151.0 / 255, blue: 255.0 / 255)
+  static let stopStatusGreen = Color(.sRGB, red: 52.0 / 255, green: 168.0 / 255, blue: 83.0 / 255)
+  static let stopStatusYellow = Color(.sRGB, red: 242.0 / 255, green: 153.0 / 255, blue: 0.0 / 255)
+  static let stopStatusBlue = Color(.sRGB, red: 69.0 / 255, green: 151.0 / 255, blue: 255.0 / 255)
 }
 
 struct StopStatusImage: View {

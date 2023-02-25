@@ -24,7 +24,7 @@ enum ConfigurationError: Error {
 @main
 struct LMFSDriverSampleApp: App {
   /// Initialize the Google Maps SDK, returning an error if initialization cannot be completed.
-  static var googleMapsInited: ConfigurationError? = {
+  static let googleMapsInited: ConfigurationError? = {
     let apiKey = ApplicationDefaults.apiKey.value
     guard apiKey.range(of: "^AIza[0-9A-Za-z-_]{35}$", options: .regularExpression) != nil else {
       return .apiKeyConfigurationError(
@@ -32,17 +32,14 @@ struct LMFSDriverSampleApp: App {
         "either in ApplicationDefaults.swift or LocalOverrides/ApplicationDefaults.json.")
     }
     GMSServices.provideAPIKey(apiKey)
+    GMSServices.setMetalRendererEnabled(true)
     return nil
   }()
 
   var body: some Scene {
     WindowGroup {
       if let error = LMFSDriverSampleApp.googleMapsInited {
-        VStack() {
-          Spacer()
-          Text(String(describing: error))
-          Spacer()
-        }
+        Text(String(describing: error))
       } else {
         let modelData = ModelData()
         ContentView()

@@ -78,11 +78,15 @@ public class TokenServlet extends HttpServlet {
     try {
       switch (tokenTypeEnum) {
         case DELIVERY_DRIVER:
-          if (!validateTokenId(tokenType, tokenId, response)) return;
+          if (!validateTokenId(tokenType, tokenId, response)) {
+            return;
+          }
           authToken = AuthTokenUtils.getDeliveryDriverToken(tokenId);
           break;
         case DELIVERY_CONSUMER:
-          if (!validateTokenId(tokenType, tokenId, response)) return;
+          if (!validateTokenId(tokenType, tokenId, response)) {
+            return;
+          }
           authToken = AuthTokenUtils.getDeliveryConsumerToken(tokenId);
           break;
         case FLEET_READER:

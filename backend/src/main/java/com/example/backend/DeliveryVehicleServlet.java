@@ -51,9 +51,6 @@ public final class DeliveryVehicleServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    DeliveryServiceGrpc.DeliveryServiceBlockingStub deliveryService =
-        grpcServiceProvider.getAuthenticatedDeliveryService();
-
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     PrintWriter responseWriter = response.getWriter();

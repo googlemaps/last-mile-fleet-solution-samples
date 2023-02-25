@@ -83,7 +83,7 @@ class NetworkServiceManager: ObservableObject {
   /// Sends a request to update the outcome of the given task.
   /// - Parameter task: The task whose outcome should be updated.
   /// - Parameter updateCompletion: A block which will be invoked when the update completes or fails.
-  public func updateTask(task: ModelData.Task, updateCompletion: os_block_t? = nil) {
+  func updateTask(task: ModelData.Task, updateCompletion: os_block_t? = nil) {
     let taskId = task.taskInfo.taskId
     let outcomeValue: String
     switch task.outcome {
@@ -95,42 +95,43 @@ class NetworkServiceManager: ObservableObject {
       outcomeValue = "FAILED"
     }
 
+    var components = URLComponents(url: NetworkServiceManager.backendBaseURL(),
+                                   resolvingAgainstBaseURL: false)!
+    components.path = "/task/\(taskId)"
+    var request = URLRequest(url: components.url!)
+    request.httpMethod = "POST"
+    let requestBody = ["task_outcome": outcomeValue]
     do {
-      var components = URLComponents(url: NetworkServiceManager.backendBaseURL(),
-                                     resolvingAgainstBaseURL: false)!
-      components.path = "/task/\(taskId)"
-      var request = URLRequest(url: components.url!)
-      request.httpMethod = "POST"
-      let requestBody = ["task_outcome": outcomeValue]
       request.httpBody = try JSONEncoder().encode(requestBody)
-      let taskUpdateIdentifier = TaskUpdateIdentifier(taskId: taskId, outcome: task.outcome)
-      let taskUpdateCancellable = session
-        .publisher(for: request)
-        .receive(on: RunLoop.main)
-        .sink(
-          receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-              self.taskUpdateLatestError = nil
-            case .failure(let error):
-              self.taskUpdateLatestError = error
-              self.taskUpdatesFailed += 1
-            }
-            self.taskUpdatesCompleted += 1
-            self.pendingTaskUpdates.completed(identifier: taskUpdateIdentifier)
-            updateCompletion?();
-          },
-          receiveValue: { _ in
-          })
-      self.pendingTaskUpdates.started(
-        identifier: taskUpdateIdentifier,
-        cancellable: taskUpdateCancellable)
     } catch {
       taskUpdateLatestError = error
       let errorDesc = "Error encoding json: \(error)"
       self.taskUpdateStatus = errorDesc
-      updateCompletion?();
+      updateCompletion?()
+      return
     }
+    let taskUpdateIdentifier = TaskUpdateIdentifier(taskId: taskId, outcome: task.outcome)
+    let taskUpdateCancellable = session
+      .publisher(for: request)
+      .receive(on: RunLoop.main)
+      .sink(
+        receiveCompletion: { completion in
+          switch completion {
+          case .finished:
+            self.taskUpdateLatestError = nil
+          case .failure(let error):
+            self.taskUpdateLatestError = error
+            self.taskUpdatesFailed += 1
+          }
+          self.taskUpdatesCompleted += 1
+          self.pendingTaskUpdates.completed(identifier: taskUpdateIdentifier)
+          updateCompletion?()
+        },
+        receiveValue: { _ in
+        })
+    self.pendingTaskUpdates.started(
+      identifier: taskUpdateIdentifier,
+      cancellable: taskUpdateCancellable)
   }
 
   /// Attempts to fetch a new manifest from the backend.
@@ -140,7 +141,7 @@ class NetworkServiceManager: ObservableObject {
   ///   - vehicleId: Specifies the ID of the vehicle to fetch. If nil, the next available vehicle
   ///                  will be fetched.
   ///   - completion: This will be called exactly once with the new manifest or nil.
-  public func fetchManifest(
+  func fetchManifest(
     clientId: String,
     vehicleId: String?,
     fetchCompletion: @escaping (Manifest?) -> Void
@@ -157,6 +158,7 @@ class NetworkServiceManager: ObservableObject {
     } catch {
       self.manifestFetchStatus = "Error encoding json: \(error)"
       fetchCompletion(nil)
+      return
     }
 
     let manifestFetchCancellable = session
@@ -174,17 +176,17 @@ class NetworkServiceManager: ObservableObject {
           self.pendingManifestFetches.completed(identifier: clientId)
         },
         receiveValue: { urlResponse in
-          do {
-            if let httpResponse = urlResponse.response as? HTTPURLResponse {
-              if httpResponse.statusCode != 200 {
-                let responseCodeString =
-                  HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
-                let dataString = String(decoding: urlResponse.data, as: UTF8.self)
-                self.manifestFetchStatus = "Status \(responseCodeString) Response: \(dataString)"
-                fetchCompletion(nil)
-                return
-              }
+          if let httpResponse = urlResponse.response as? HTTPURLResponse {
+            if httpResponse.statusCode != 200 {
+              let responseCodeString =
+                HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+              let dataString = String(decoding: urlResponse.data, as: UTF8.self)
+              self.manifestFetchStatus = "Status \(responseCodeString) Response: \(dataString)"
+              fetchCompletion(nil)
+              return
             }
+          }
+          do {
             let newManifest = try Manifest.loadFrom(data: urlResponse.data)
             self.manifestFetchStatus = "Success"
             fetchCompletion(newManifest)
@@ -207,7 +209,7 @@ class NetworkServiceManager: ObservableObject {
   ///   - vehicleId: The vehicle ID for the currently loaded manifest.
   ///   - newStopState: The new state of the current stop.
   ///   - stops: The new list of remaining stops in this manifest.
-  public func updateStops(
+  func updateStops(
     vehicleId: String,
     newStopState: ModelData.StopState? = nil,
     stops: [ModelData.Stop],
@@ -234,6 +236,8 @@ class NetworkServiceManager: ObservableObject {
         ) as Data
     } catch {
       self.stopUpdateStatus = "Error encoding json: \(error)"
+      updateCompletion?()
+      return
     }
     self.stopUpdateStatus = "Pending"
     let stopUpdateCancellable = session

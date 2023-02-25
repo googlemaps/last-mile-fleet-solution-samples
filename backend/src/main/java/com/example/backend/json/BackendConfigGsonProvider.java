@@ -75,4 +75,6 @@ public final class BackendConfigGsonProvider {
       return Duration.ofSeconds(json.getAsLong());
     }
   }
+
+  private BackendConfigGsonProvider() {}
 }

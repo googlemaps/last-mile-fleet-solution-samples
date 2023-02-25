@@ -20,7 +20,7 @@ import UIKit
 
 class NavViewController: UIViewController {
   /// The instance of locationManager we should use for requesting always permission.
-  private var locationManager: CLLocationManager
+  private let locationManager: CLLocationManager
 
   /// The main repository of state for the app.
   ///
@@ -30,10 +30,10 @@ class NavViewController: UIViewController {
   @ObservedObject var modelData: ModelData
 
   /// Array of speed multipliers to offer when simulating progress along a route.
-  private static var speedOptions: [Int] = [1, 2, 4, 8, 16]
+  private static let speedOptions: [Int] = [1, 2, 4, 8, 16]
 
   /// Wrapper around the application preference for location simulation.
-  private var disableLocationSimulation = ApplicationDefaults.disableLocationSimulation
+  private let disableLocationSimulation = ApplicationDefaults.disableLocationSimulation
 
   /// The delivery driver API object for this navigation session.
   ///

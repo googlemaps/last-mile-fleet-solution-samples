@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./main.css">
   <link rel="stylesheet" href="./shipment_tracking.css">
   <link rel="stylesheet" href="./fleet_tracking.css">
@@ -23,7 +23,7 @@
           <div class="mdc-icon-button__ripple"></div>
           menu
         </button>
-        <span class="mdc-top-app-bar__title"
+        <span role="heading" aria-level="1" class="mdc-top-app-bar__title"
           style=" font-family: 'Google Sans', 'Roboto', sans-serif !important; font-weight: 400;">Fleet Tracking</span>
       </section>
     </div>
@@ -85,7 +85,6 @@
                 <div class="mdc-tab-scroller__scroll-content">
                   <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
                     <span class="mdc-tab__content">
-<!--                       <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span> -->
                       <span class="mdc-tab__text-label">Tasks</span>
                     </span>
                     <span class="mdc-tab-indicator mdc-tab-indicator--active">
@@ -93,12 +92,11 @@
                     </span>
                     <span class="mdc-tab__ripple"></span>
                   </button>
-                  <button class="mdc-tab" role="tab" aria-selected="true" tabindex="0">
+                  <button class="mdc-tab" role="tab" aria-selected="false" tabindex="-1">
                     <span class="mdc-tab__content">
-<!--                       <span class="mdc-tab__icon material-icons" aria-hidden="true">favorite</span> -->
                       <span class="mdc-tab__text-label">Details</span>
                     </span>
-                    <span class="mdc-tab-indicator mdc-tab-indicator--active">
+                    <span class="mdc-tab-indicator">
                       <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
                     </span>
                     <span class="mdc-tab__ripple"></span>

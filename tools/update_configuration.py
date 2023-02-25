@@ -18,7 +18,6 @@ import argparse
 import json
 import pathlib
 import re
-import readline
 
 CONFIRMATION_RE = re.compile(r'^y(e(s)?)?$', re.IGNORECASE)
 """Regex for a positive response to the confirmation prompt."""

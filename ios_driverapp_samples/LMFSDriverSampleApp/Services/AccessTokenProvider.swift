@@ -15,7 +15,6 @@
 import Combine
 import Foundation
 import GoogleRidesharingDriver
-import UIKit
 
 /// A service that can fetch tokens from the backend and test their validity.
 ///
@@ -68,7 +67,7 @@ class AccessTokenProvider: NSObject, GMTDAuthorization, ObservableObject {
   /// Any token in this result may not be valid, so this shouldn't be
   /// used for transactions; those should always call fetchToken().
   /// This property is intended for debugging UIs that display the last result.
-  @Published public private(set) var result = TokenOrError.failure(Errors.uninitialized)
+  @Published private(set) var result = TokenOrError.failure(Errors.uninitialized)
 
   /// The cancelable for any token request in-flight.
   private var inFlightFetch: AnyCancellable?

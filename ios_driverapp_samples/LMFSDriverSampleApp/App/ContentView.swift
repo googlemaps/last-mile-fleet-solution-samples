@@ -90,7 +90,7 @@ struct ContentView: View {
 }
 
 extension ModelData {
-  func upcomingTaskCount(type: Manifest.TaskType) -> Int {
+  fileprivate func upcomingTaskCount(type: Manifest.TaskType) -> Int {
     return self.navigationState?.upcomingStop.taskCount(taskType: type) ?? 0
   }
 }

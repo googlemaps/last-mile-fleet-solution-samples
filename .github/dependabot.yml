@@ -10,3 +10,6 @@ updates:
     directory: "/backend"
     schedule:
       interval: "weekly"
+    ignore:
+      # Spring 6 requires Java 17
+      - dependency-name: "spring*"

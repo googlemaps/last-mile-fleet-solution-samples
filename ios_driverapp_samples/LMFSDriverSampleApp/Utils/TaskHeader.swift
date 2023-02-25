@@ -34,8 +34,8 @@ struct TaskHeader: View {
         // Workaround for text-wrapping issue in SwiftUI. See
           // https://developer.apple.com/documentation/swiftui/view/fixedsize(horizontal:vertical:)
         .fixedSize(horizontal: false, vertical: true)
-      if secondLine != nil {
-        Text(secondLine!)
+      if let secondLine = secondLine {
+        Text(secondLine)
           .font(.system(size: 14))
           .lineLimit(nil)
           // Workaround for text-wrapping issue in SwiftUI. See
