@@ -186,6 +186,21 @@ Params | Type   | Description
 The response is a list of `DeliveryConfig.Task` objects, assigned to the
 delivery vehicle with the given `id`.
 
+#### `GET /taskInfoByTrackingId/:trackingId`
+
+Returns manifest information for the task with the given Tracking ID.
+
+**Request**
+
+Params         | Type   | Description
+-------------- | ------ | --------------------------
+`trackingId`   | string | The tracking ID. Required.
+
+**Response**
+
+The response is a `DeliveryConfig.Task` for the task with the given
+`trackingId`.
+
 ## Delivery configuration file
 
 ```js
