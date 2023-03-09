@@ -25,7 +25,7 @@ public final class SampleServletModule extends ServletModule {
     super.configureServlets();
     install(new GrpcServiceModule());
     serve("/token/*").with(TokenServlet.class);
-    serve("/tasks", "/task/*").with(TaskServlet.class);
+    serve("/tasks", "/task/*", "/taskInfoByTrackingId/*").with(TaskServlet.class);
     serve("/delivery_vehicle/*").with(DeliveryVehicleServlet.class);
     serve("/backend_config").with(BackendConfigServlet.class);
     serve("/manifest", "/manifest/*").with(ManifestServlet.class);

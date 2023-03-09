@@ -123,6 +123,31 @@ public final class TaskServlet extends HttpServlet {
       return;
     }
 
+    if (request.getServletPath().equals("/taskInfoByTrackingId")) {
+      // get task information by tracking id
+      if (request.getPathInfo() == null) {
+        logger.log(
+            Level.WARNING,
+            "The client requested a task by tracking ID but did not supply a trackingId.");
+        ServletUtils.setErrorResponse(response, "The tracking ID must be specified.", 400);
+        return;
+      }
+      String trackingId = request.getPathInfo().substring(1);
+
+      BackendConfig.Task t = servletState.getBackendConfigTaskByTrackingId(trackingId);
+      if (t == null) {
+        logger.log(
+            Level.WARNING,
+            String.format("The tracking ID %s does not exist in the manifest.", trackingId));
+        ServletUtils.setErrorResponse(response, "The task with the tracking ID cannot be found.", 404);
+        return;
+      }
+
+      responseWriter.print(BackendConfigGsonProvider.get().toJson(t));
+      responseWriter.flush();
+      return;
+    }
+
     if (request.getServletPath().equals("/task")) {
       // get a task by id
       if (request.getPathInfo() == null) {

@@ -185,15 +185,15 @@ class ShipmentTrackingApp {
     });
 
     this.locationProvider.addListener('update', e => {
-      const task = e.task;
-      console.log(task);
+      const taskTrackingInfo = e.taskTrackingInfo;
+      console.log(taskTrackingInfo);
       this.isLoadingResults = false;
 
-      if (!task) {
+      if (!taskTrackingInfo) {
         return;
       }
 
-      if (!task.hasOwnProperty('status')) {
+      if (!taskTrackingInfo.hasOwnProperty('state')) {
         document.getElementById('tracking-id-error').textContent =
             `No shipment found for tracking id '${this.trackingId_}'`;
         showHideElementById('tracking-id-error', true);
@@ -206,58 +206,47 @@ class ShipmentTrackingApp {
       document.getElementById('tracking-id-value').textContent =
           this.trackingId_;
 
-      // Task type
-      document.getElementById('task-type-value').textContent = task.type;
-
       // Task status
-      document.getElementById('task-status-value').textContent = task.status;
+      document.getElementById('task-status-value').textContent =
+          taskTrackingInfo.state;
 
       // Task outcome
-      document.getElementById('task-outcome-value').textContent = task.outcome;
+      document.getElementById('task-outcome-value').textContent =
+          taskTrackingInfo.taskOutcome;
 
-      // # stops remaining
-      const showStopsRemaining = !!task.remainingVehicleJourneySegments;
-      const remainingVehicleJourneySegments =
-          task.remainingVehicleJourneySegments || [];
-      const stopsRemaining =
-          showStopsRemaining ? remainingVehicleJourneySegments.length : -1;
-      if (showStopsRemaining) {
-        document.getElementById('stops-remaining-value').textContent =
-            stopsRemaining;
-        if (stopsRemaining >= 2) {
-          document.getElementById('stops-count').innerText =
-              `${stopsRemaining} stops away`;
-        } else if (stopsRemaining === 1) {
-          document.getElementById('stops-remaining-value').textContent = '';
-          if (task.outcome === 'SUCCEEDED') {
-            document.getElementById('stops-count').innerText = 'Completed';
-          } else if (task.outcome === 'FAILED') {
-            document.getElementById('stops-count').innerText = 'Attempted';
-          } else {
-            document.getElementById('stops-count').innerText = `You are the next stop`;
-          }
+      if (taskTrackingInfo.state === 'CLOSED') {
+        document.getElementById('stops-remaining-value').textContent = '';
+        if (taskTrackingInfo.outcome === 'SUCCEEDED') {
+          document.getElementById('stops-count').innerText = 'Completed';
+        } else {
+          document.getElementById('stops-count').innerText = 'Attempted';
         }
       } else {
-        document.getElementById('stops-remaining-value').textContent = '';
-        if (task.status === 'CLOSED') {
+        document.getElementById('stops-remaining-value').textContent =
+            `${taskTrackingInfo.remainingStopCount}`;
+        if (taskTrackingInfo.remainingStopCount >= 2) {
+          document.getElementById('stops-count').innerText =
+          `${taskTrackingInfo.remainingStopCount} stops away`;
+        } else if (taskTrackingInfo.remainingStopCount === 1) {
           document.getElementById('stops-remaining-value').textContent = '';
-          if (task.outcome === 'SUCCEEDED') {
+          if (taskTrackingInfo.taskOutcome === 'SUCCEEDED') {
             document.getElementById('stops-count').innerText = 'Completed';
-          } else {
+          } else if (taskTrackingInfo.taskOutcome === 'FAILED') {
             document.getElementById('stops-count').innerText = 'Attempted';
+          } else {
+            document.getElementById('stops-count').innerText =
+                `You are the next stop`;
           }
-        } else {
-          document.getElementById('stops-count').innerText = '';
         }
       }
 
       // ETA
       document.getElementById('eta-value').textContent =
-          task.estimatedCompletionTime;
+          taskTrackingInfo.estimatedTaskCompletionTime;
 
       // Fetch data from manifest
-      const taskId = task.name.split('/').pop();
-      fetch(`/task/${taskId}?manifestDataRequested=true`)
+      const taskId = taskTrackingInfo.name.split('/').pop();
+      fetch(`/taskInfoByTrackingId/${taskId}`)
           .then((response) => response.json())
           .then((d) => {
             if (d == null || d['status'] === 404) {
@@ -316,7 +305,6 @@ class ShipmentTrackingApp {
     this.resetErrorDisplay();
 
     document.getElementById('tracking-id-value').textContent = '';
-    document.getElementById('task-type-value').textContent = '';
     document.getElementById('task-status-value').textContent = '';
     document.getElementById('task-outcome-value').textContent = '';
     document.getElementById('stops-remaining-value').textContent = '';

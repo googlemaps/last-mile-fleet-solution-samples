@@ -131,6 +131,20 @@ class ServletState {
     return null;
   }
 
+  public synchronized BackendConfig.Task getBackendConfigTaskByTrackingId(String trackingId) {
+    if (backendConfig == null) {
+      return null;
+    }
+    for (BackendConfig.Manifest manifest : backendConfig.manifests) {
+      for (BackendConfig.Task task : manifest.tasks) {
+        if (task.trackingId.equals(trackingId)) {
+          return task;
+        }
+      }
+    }
+    return null;
+  }
+
   public synchronized void removeBackendConfigTask(String taskId) {
     for (BackendConfig.Manifest manifest : backendConfig.manifests) {
       for (BackendConfig.Stop stop : manifest.stops) {
