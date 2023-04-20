@@ -5,4 +5,5 @@ target 'LMFSDriverSampleApp' do
   platform :ios, '15.0'
 
   pod 'GoogleRidesharingDriver'
+  pod 'GoogleNavigation', '~> 4.4.0'
 end
