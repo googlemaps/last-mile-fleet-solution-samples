@@ -539,13 +539,13 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.24):
     - BoringSSL-GRPC/Interface (= 0.0.24)
   - BoringSSL-GRPC/Interface (0.0.24)
-  - GoogleMaps (6.1.1):
-    - GoogleMaps/Maps (= 6.1.1)
-  - GoogleMaps/Base (6.1.1)
-  - GoogleMaps/Maps (6.1.1):
+  - GoogleMaps (7.4.0):
+    - GoogleMaps/Maps (= 7.4.0)
+  - GoogleMaps/Base (7.4.0)
+  - GoogleMaps/Maps (7.4.0):
     - GoogleMaps/Base
-  - GoogleNavigation (3.1.1):
-    - GoogleMaps (= 6.1.1)
+  - GoogleNavigation (4.4.0):
+    - GoogleMaps (= 7.4.0)
   - GoogleRidesharingDriver (1.0.5):
     - GoogleNavigation (>= 2.0)
     - gRPC (>= 1.0)
@@ -602,33 +602,33 @@ PODS:
   - Libuv-gRPC/Interface (0.0.10)
 
 DEPENDENCIES:
-  - GoogleNavigation (~> 3.1.1)
+  - GoogleNavigation (~> 4.4.0)
   - GoogleRidesharingDriver
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - abseil
     - BoringSSL-GRPC
+    - GoogleMaps
+    - GoogleNavigation
     - gRPC
     - gRPC-Core
     - gRPC-RxLibrary
     - Libuv-gRPC
-  sso://cpdc-internal/spec:
-    - GoogleMaps
-    - GoogleNavigation
+  sso://cpdc-internal/spec.git:
     - GoogleRidesharingDriver
 
 SPEC CHECKSUMS:
   abseil: ebe5b5529fb05d93a8bdb7951607be08b7fa71bc
   BoringSSL-GRPC: 3175b25143e648463a56daeaaa499c6cb86dad33
-  GoogleMaps: c589797663b4e8ecf3730a87726a29bfa91b26e3
-  GoogleNavigation: 525c49db314d62b7124927eeaea7f7a01e22b46b
+  GoogleMaps: 032f676450ba0779bd8ce16840690915f84e57ac
+  GoogleNavigation: c07206bab1e1d483003a4d95ae58ecfa8d29fd21
   GoogleRidesharingDriver: f506b50ce6bfe7898b0c1d028ca42c06131f9621
   gRPC: f28b04db68d04d7c7be78bc5c721b7729a253521
   gRPC-Core: 943e491cb0d45598b0b0eb9e910c88080369290b
   gRPC-RxLibrary: c98028f0fd838a01aee3afd7b16a1a3a57978552
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
 
-PODFILE CHECKSUM: 192b0acf3892a84b89240d8c8b9ce4ea284e4988
+PODFILE CHECKSUM: ba6f1ef09808206eb8358546ea1c57eb0498d139
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.0
