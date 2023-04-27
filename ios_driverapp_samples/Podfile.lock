@@ -602,7 +602,7 @@ PODS:
   - Libuv-gRPC/Interface (0.0.10)
 
 DEPENDENCIES:
-  - GoogleNavigation (~> 4.4.0)
+  - GoogleNavigation (~> 4.4)
   - GoogleRidesharingDriver
 
 SPEC REPOS:
@@ -629,6 +629,6 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: c98028f0fd838a01aee3afd7b16a1a3a57978552
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
 
-PODFILE CHECKSUM: ba6f1ef09808206eb8358546ea1c57eb0498d139
+PODFILE CHECKSUM: 16a2f428a86e7be71cdfa0c804197c8fad588ab1
 
 COCOAPODS: 1.12.0
