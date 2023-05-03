@@ -254,41 +254,19 @@ class OptionsModal {
   /**
    * Gets a new icon
    *
-   * @private
    * @param {string} iconName
    * @return {?object}
    */
-  getIcon_(iconName) {
+  getIcon(iconName) {
+    if (iconName == null || !(iconName in ICON_OPTIONS)) {
+      return '';
+    }
     const iconOption = ICON_OPTIONS[iconName];
     if (iconOption.url) {
       return {url: iconOption.url, scaledSize: new google.maps.Size(48, 48)};
     } else if (iconOption.path) {
       return {...iconOption};
     }
-  }
-
-  /**
-   * Changes the icon for the given markers
-   *
-   * @private
-   * @param {string} iconName
-   * @param {!Array<!google.map.Marker>} markers
-   */
-  changeMarkerIcon_(iconName, markers) {
-    markers.forEach((marker) => marker.setIcon(this.getIcon_(iconName)));
-  }
-
-  /**
-   * Gets a MarkerSetup object for MapView marker setup field
-   *
-   * @param {string} iconName
-   * @return {!MarkerSetup}
-   */
-  getMarkerSetup(iconName) {
-    return (options) => {
-      options.defaultMarkerOptions.icon = this.getIcon_(iconName);
-      return {markerOptions: options.defaultMarkerOptions};
-    };
   }
 
   /**

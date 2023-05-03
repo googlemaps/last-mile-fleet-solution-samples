@@ -152,6 +152,14 @@ class ShipmentTrackingApp {
           trackingId: this.trackingId_,
           pollingIntervalMillis:
               this.optionsModal.options.pollingIntervalMillis,
+          deliveryVehicleMarkerCustomization: {
+            icon: this.optionsModal.getIcon(
+                this.optionsModal.options.vehicleIcon),
+          },
+          destinationMarkerCustomization: {
+            icon: this.optionsModal.getIcon(
+                this.optionsModal.options.destinationIcon),
+          },
         });
 
     const mapViewOptions = {
@@ -162,17 +170,6 @@ class ShipmentTrackingApp {
       takenRoutePolylineSetup:
           {visible: this.optionsModal.options.showTakenRoutePolyline},
     };
-
-    if (this.optionsModal.options.vehicleIcon !== 'defaultVehicleIcon') {
-      mapViewOptions.vehicleMarkerSetup = this.optionsModal.getMarkerSetup(
-          this.optionsModal.options.vehicleIcon);
-    }
-
-    if (this.optionsModal.options.destinationIcon !==
-        'defaultDestinationIcon') {
-      mapViewOptions.destinationMarkerSetup = this.optionsModal.getMarkerSetup(
-          this.optionsModal.options.destinationIcon);
-    }
 
     this.mapView =
         new google.maps.journeySharing.JourneySharingMapView(mapViewOptions);

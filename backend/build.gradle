@@ -50,7 +50,7 @@ dependencies {
   implementation 'jstl:jstl:1.2'
 
   // Add dependencies here
-  implementation 'com.google.maps:grpc-google-maps-fleetengine-delivery-v1-java:0.0.348'
+  implementation 'com.google.maps:grpc-google-maps-fleetengine-delivery-v1-java:latest.release'
 
   // Fleet Engine Auth Library and its dependencies
   implementation 'com.google.maps:fleetengine-auth:1.8.0'
