@@ -151,20 +151,44 @@ class DeliveryVehicleTrackingApp {
    */
   start() {
     this.locationProvider =
-      new google.maps.journeySharing
-        .FleetEngineDeliveryVehicleLocationProvider({
-          projectId: PROJECT_ID,
-          deliveryVehicleId: this.deliveryVehicleId_,
-          authTokenFetcher: this.authTokenFetcher,
-          pollingIntervalMillis:
-            this.optionsModal.options.pollingIntervalMillis,
+        new google.maps.journeySharing
+            .FleetEngineDeliveryVehicleLocationProvider({
+              projectId: PROJECT_ID,
+              deliveryVehicleId: this.deliveryVehicleId_,
+              authTokenFetcher: this.authTokenFetcher,
+              pollingIntervalMillis:
+                  this.optionsModal.options.pollingIntervalMillis,
 
-          // Show all incomplete tasks as well as complete ones
-          taskFilterOptions: {},
-          shouldShowTasks: this.optionsModal.options.showTasks,
-          shouldShowOutcomeLocations:
-            this.optionsModal.options.showOutcomeLocations,
-        });
+              // Show all incomplete tasks as well as complete ones
+              taskFilterOptions: {},
+              shouldShowTasks: this.optionsModal.options.showTasks,
+              shouldShowOutcomeLocations:
+                  this.optionsModal.options.showOutcomeLocations,
+              taskMarkerCustomization: (params) => {
+                let icon = this.optionsModal.getIcon(
+                    this.optionsModal.options.destinationIcon);
+                if (params.task.outcome === 'SUCCEEDED') {
+                  icon = this.optionsModal.getIcon(
+                      this.optionsModal.options.successfulTaskIcon);
+                } else if (params.task.outcome === 'FAILED') {
+                  icon = this.optionsModal.getIcon(
+                      this.optionsModal.options.unsuccessfulTaskIcon);
+                }
+                params.marker.setIcon(icon);
+              },
+              taskOutcomeMarkerCustomization: {
+                icon: this.optionsModal.getIcon(
+                    this.optionsModal.options.taskOutcomeIcon),
+              },
+              plannedStopMarkerCustomization: {
+                icon: this.optionsModal.getIcon(
+                    this.optionsModal.options.waypointIcon),
+              },
+              deliveryVehicleMarkerCustomization: {
+                icon: this.optionsModal.getIcon(
+                    this.optionsModal.options.vehicleIcon),
+              },
+            });
 
     const mapViewOptions = {
       element: document.getElementById('map_canvas'),
@@ -174,41 +198,6 @@ class DeliveryVehicleTrackingApp {
       takenRoutePolylineSetup:
         { visible: this.optionsModal.options.showTakenRoutePolyline },
     };
-
-    if (this.optionsModal.options.vehicleIcon !== 'defaultVehicleIcon') {
-      mapViewOptions.vehicleMarkerSetup =
-        this.optionsModal.getMarkerSetup(this.optionsModal.options.vehicleIcon);
-    }
-
-    if (this.optionsModal.options.destinationIcon !== 'defaultDestinationIcon') {
-      mapViewOptions.destinationMarkerSetup =
-        this.optionsModal.getMarkerSetup(this.optionsModal.options.destinationIcon);
-    }
-
-    if (this.optionsModal.options.waypointIcon !== 'defaultWaypointIcon') {
-      mapViewOptions.waypointMarkerSetup = this.optionsModal.getMarkerSetup(
-        this.optionsModal.options.waypointIcon);
-    }
-
-    if (this.optionsModal.options.successfulTaskIcon !==
-      'defaultSuccessfulTaskIcon') {
-      mapViewOptions.successfulTaskMarkerSetup =
-        this.optionsModal.getMarkerSetup(
-          this.optionsModal.options.successfulTaskIcon);
-    }
-
-    if (this.optionsModal.options.unsuccessfulTaskIcon !==
-      'defaultUnsuccessfulTaskIcon') {
-      mapViewOptions.unsuccessfulTaskMarkerSetup =
-        this.optionsModal.getMarkerSetup(
-          this.optionsModal.options.unsuccessfulTaskIcon);
-    }
-
-    if (this.optionsModal.options.taskOutcomeIcon !==
-      'defaultTaskOutcomeIcon') {
-      mapViewOptions.taskOutcomeMarkerSetup = this.optionsModal.getMarkerSetup(
-        this.optionsModal.options.taskOutcomeIcon);
-    }
 
     this.mapView =
       new google.maps.journeySharing.JourneySharingMapView(mapViewOptions);
