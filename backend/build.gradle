@@ -58,8 +58,8 @@ dependencies {
   implementation 'com.google.auth:google-auth-library-oauth2-http:0.26.0'
 
   implementation 'com.auth0:java-jwt:3.10.2'
-  implementation 'com.google.inject:guice:5.1.0'
-  implementation 'com.google.inject.extensions:guice-servlet:5.1.0'
+  implementation 'com.google.inject:guice:7.0.0'
+  implementation 'com.google.inject.extensions:guice-servlet:7.0.0'
   implementation 'com.google.code.gson:gson:2.10.1'
   implementation 'com.google.auto.value:auto-value-annotations:1.10.1'
   implementation 'io.grpc:grpc-protobuf:1.55.1'
