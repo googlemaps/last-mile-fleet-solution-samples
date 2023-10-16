@@ -77,7 +77,7 @@ dependencies {
   testImplementation 'org.mockito:mockito-all:1.10.19'
   testImplementation 'org.springframework:spring-core:5.3.10'
   testImplementation 'org.springframework:spring-web:5.3.10'
-  testImplementation 'org.springframework:spring-test:5.3.10'
+  testImplementation 'org.springframework:spring-test:6.0.13'
 
   testImplementation 'com.google.appengine:appengine-testing:+'
   testImplementation 'com.google.appengine:appengine-api-stubs:+'
