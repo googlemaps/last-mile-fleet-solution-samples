@@ -35,7 +35,7 @@ final class AuthenticatedGrpcServiceProviderImpl implements AuthenticatedGrpcSer
   @Override
   public DeliveryServiceGrpc.DeliveryServiceBlockingStub getAuthenticatedDeliveryService() {
     DeliveryServiceGrpc.DeliveryServiceBlockingStub authenticatedDeliveryService =
-        MetadataUtils.attachHeaders(deliveryService, new Metadata());
+        deliveryService.withInterceptors(MetadataUtils.newAttachHeadersInterceptor(new Metadata()));
     return authenticatedDeliveryService;
   }
 }

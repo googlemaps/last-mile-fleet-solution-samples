@@ -59,3 +59,6 @@
 -dontwarn junit.**
 -keep class org.junit.** { *; }
 -dontwarn org.junit.**
+
+# https://issuetracker.google.com/issues/279996549
+-dontwarn org.kxml2.io.KXml**
