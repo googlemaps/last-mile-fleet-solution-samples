@@ -20,10 +20,10 @@ from the backend.
 This document assumes you have the following software set up on your
 workstation:
 
--   Java SDK 11 (support for newer SDKs is work in progress)
+-   Java SDK 17 (support for newer SDKs is work in progress)
 -   Android Studio (latest version)
 -   Android SDK (latest updates)
--   Gradle 7 (latest version)
+-   Gradle 8 (latest version)
 
 You also need to
 [get access to the Driver SDK for Android](https://developers.google.com/maps/documentation/transportation-logistics/last-mile-fleet-solution/shipment-tracking/driver-sdk/driver_sdk_quickstart_android#get_access).

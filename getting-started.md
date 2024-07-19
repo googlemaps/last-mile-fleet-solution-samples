@@ -11,8 +11,8 @@ This document assumes the following:
 
 -   Your workstation has the following pieces of software installed:
 
-    -   Java SDK 11 (support for newer SDKs is work in progress)
-    -   Gradle 7 (latest version)
+    -   Java SDK 17 (support for newer SDKs is work in progress)
+    -   Gradle 8 (latest version)
     -   The `gcloud` command line utility for Google Cloud
         ([instructions](https://cloud.google.com/sdk/docs/install))
 

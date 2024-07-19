@@ -13,6 +13,7 @@
  */
 
 import CoreLocation
+import GoogleMaps
 import GoogleNavigation
 import GoogleRidesharingDriver
 import SwiftUI

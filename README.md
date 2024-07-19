@@ -85,7 +85,12 @@ The scenario ingestion component allows the user to upload a delivery
 configuration file, which contains definitions for delivery vehicles, stops, and
 tasks to be performed at each stop. A task can be a pick-up or delivery of a
 package. Upon receiving such a file, the component calls Fleet Engine to create
-these vehicles, stops, and tasks.
+these vehicles, stops, and tasks. Uploading the delivery configuration file also
+triggers the creation of "Manifest" configs for each vehicle in the file.
+These Manifests are a sample backend implementation and not a requirement for
+LMFS itself. Restarting the backend removes the existing Manifests because they
+exist only in RAM.
+
 
 #### Delivery vehicle assignment
 
@@ -94,7 +99,8 @@ one of the defined (and available) delivery vehicles to the requester, and sends
 the information to the app. The app uses the information to set up its internal
 representations of these entities, and allows for simulation of a delivery
 vehicle as it travels through its assigned stops and performs its assigned
-tasks.
+tasks. This means that your app's configured vehicle ID may not match the
+assigned vehicle ID.
 
 #### Vehicle and task updates
 

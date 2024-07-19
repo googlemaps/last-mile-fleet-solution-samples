@@ -12,4 +12,11 @@ updates:
       interval: "weekly"
     ignore:
       # Spring 6 requires Java 17
-      - dependency-name: "spring*"
+      - dependency-name: "org.springframework:spring*"
+        versions: ["[6.0,)]"]
+
+      # Guice 7 requires javax -> jakarta upgrade
+      - dependency-name: "com.google.inject:guice"
+        versions: ["[7.0,)]"]
+      - dependency-name: "com.google.inject.extensions:guice-servlet"
+        versions: ["[7.0,)]"]

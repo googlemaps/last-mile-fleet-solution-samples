@@ -23,8 +23,8 @@ from the backend.
 This document assumes you have the following software set up on your
 workstation. Ensure these are installed before proceeding.
 
--   Java SDK 11 (support for newer SDKs is work in progress)
--   Gradle 7 (latest version)
+-   Java SDK 17 (support for newer SDKs is work in progress)
+-   Gradle 8 (latest version)
 -   Xcode (13.2.1 or newer)
 -   Cocoapods
 -   The `gcloud` command line utility for Google Cloud
