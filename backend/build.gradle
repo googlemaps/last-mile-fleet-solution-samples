@@ -22,7 +22,6 @@ buildscript {    // Configuration for building
 }
 
 plugins {
-  id 'com.github.sherter.google-java-format' version '0.8'
   id 'com.google.cloud.artifactregistry.gradle-plugin' version '2.1.5'
 }
 
@@ -62,9 +61,10 @@ dependencies {
   implementation 'com.google.inject.extensions:guice-servlet:6.0.0'
   implementation 'com.google.code.gson:gson:2.10.1'
   implementation 'com.google.auto.value:auto-value-annotations:1.10.4'
-  implementation 'io.grpc:grpc-protobuf:1.62.2'
-  implementation 'io.grpc:grpc-stub:1.62.2'
-  implementation 'io.grpc:grpc-netty:1.62.2'
+  implementation 'io.grpc:grpc-api:1.66.0'
+  implementation 'io.grpc:grpc-protobuf:1.66.0'
+  implementation 'io.grpc:grpc-stub:1.66.0'
+  implementation 'io.grpc:grpc-netty:1.66.0'
   implementation 'javax.ws.rs:jsr311-api:1.1.1'
   implementation 'com.google.protobuf:protobuf-java:3.25.3'
   implementation 'com.google.protobuf:protobuf-java-util:3.25.3'
