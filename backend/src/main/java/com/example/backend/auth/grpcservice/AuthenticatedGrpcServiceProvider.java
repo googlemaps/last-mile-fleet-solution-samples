@@ -14,7 +14,7 @@
  */
 package com.example.backend.auth.grpcservice;
 
-import google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
+import com.google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
 
 /** Backend to get authenticated Grpc services. */
 public interface AuthenticatedGrpcServiceProvider {

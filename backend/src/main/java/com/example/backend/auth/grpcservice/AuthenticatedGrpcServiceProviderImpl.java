@@ -16,7 +16,7 @@ package com.example.backend.auth.grpcservice;
 
 import com.example.backend.auth.AuthTokenUtils;
 import com.example.backend.utils.SampleBackendUtils;
-import google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
+import com.google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.Metadata;

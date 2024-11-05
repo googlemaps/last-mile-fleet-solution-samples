@@ -15,12 +15,12 @@
 package com.example.backend.utils;
 
 import com.example.backend.json.BackendConfig;
+import com.google.maps.fleetengine.delivery.v1.LocationInfo;
+import com.google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.VehicleJourneySegment;
+import com.google.maps.fleetengine.delivery.v1.VehicleStop;
 import com.google.protobuf.Duration;
 import com.google.type.LatLng;
-import google.maps.fleetengine.delivery.v1.LocationInfo;
-import google.maps.fleetengine.delivery.v1.Task;
-import google.maps.fleetengine.delivery.v1.VehicleJourneySegment;
-import google.maps.fleetengine.delivery.v1.VehicleStop;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

@@ -20,15 +20,15 @@ import com.example.backend.json.BackendConfigGsonProvider;
 import com.example.backend.utils.ServletUtils;
 import com.example.backend.utils.TaskUtils;
 import com.google.gson.JsonObject;
+import com.google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
+import com.google.maps.fleetengine.delivery.v1.DeliveryVehicle;
+import com.google.maps.fleetengine.delivery.v1.GetTaskRequest;
+import com.google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
+import com.google.maps.fleetengine.delivery.v1.VehicleJourneySegment;
+import com.google.maps.fleetengine.delivery.v1.VehicleStop;
 import com.google.protobuf.FieldMask;
 import com.google.protobuf.Timestamp;
-import google.maps.fleetengine.delivery.v1.DeliveryServiceGrpc;
-import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
-import google.maps.fleetengine.delivery.v1.GetTaskRequest;
-import google.maps.fleetengine.delivery.v1.Task;
-import google.maps.fleetengine.delivery.v1.UpdateTaskRequest;
-import google.maps.fleetengine.delivery.v1.VehicleJourneySegment;
-import google.maps.fleetengine.delivery.v1.VehicleStop;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -139,7 +139,8 @@ public final class TaskServlet extends HttpServlet {
         logger.log(
             Level.WARNING,
             String.format("The tracking ID %s does not exist in the manifest.", trackingId));
-        ServletUtils.setErrorResponse(response, "The task with the tracking ID cannot be found.", 404);
+        ServletUtils.setErrorResponse(
+            response, "The task with the tracking ID cannot be found.", 404);
         return;
       }
 

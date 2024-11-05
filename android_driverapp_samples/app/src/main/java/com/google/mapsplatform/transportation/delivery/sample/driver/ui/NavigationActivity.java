@@ -139,13 +139,13 @@ public class NavigationActivity extends AppCompatActivity {
               .setNavigator(navigator)
               .setRoadSnappedLocationProvider(
                   NavigationApi.getRoadSnappedLocationProvider(application))
-              .setStatusListener(
-                  (statusLevel, statusCode, statusMsg) -> {
+              .setDriverStatusListener(
+                  (statusLevel, statusCode, statusMsg, cause) -> {
                     Log.d(
                         TAG,
                         String.format(
-                            "VehicleReporter: %s | %s | %s",
-                            statusLevel.name(), statusCode.name(), statusMsg));
+                            "VehicleReporter: %s | %s | %s | %s",
+                            statusLevel.name(), statusCode.name(), statusMsg, cause.getMessage()));
                   })
               .build();
       DeliveryDriverApi.createInstance(driverContext);
