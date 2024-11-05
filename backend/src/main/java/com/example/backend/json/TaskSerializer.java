@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.Task;
 import java.lang.reflect.Type;
 
 final class TaskSerializer implements JsonSerializer<Task> {
