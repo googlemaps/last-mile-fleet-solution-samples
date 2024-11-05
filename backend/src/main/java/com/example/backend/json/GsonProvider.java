@@ -17,8 +17,8 @@ package com.example.backend.json;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.type.LatLng;
-import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
-import google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.DeliveryVehicle;
+import com.google.maps.fleetengine.delivery.v1.Task;
 
 /**
  * Provider for Gson after setting custom serializer and deserializer.
