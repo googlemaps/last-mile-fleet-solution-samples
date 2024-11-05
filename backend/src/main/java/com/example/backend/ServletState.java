@@ -15,8 +15,8 @@
 package com.example.backend;
 
 import com.example.backend.json.BackendConfig;
-import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
-import google.maps.fleetengine.delivery.v1.Task;
+import com.google.maps.fleetengine.delivery.v1.DeliveryVehicle;
+import com.google.maps.fleetengine.delivery.v1.Task;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
