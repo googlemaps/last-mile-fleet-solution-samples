@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # A workflow that runs tests on every new pull request
-name: Build Android app
+name: Test Android app and compile backend tests
 
 on:
   repository_dispatch:
@@ -38,13 +38,21 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Generate gradle wrapper
+    - name: Generate Android gradle wrapper
       working-directory: ./android_driverapp_samples
       run: |
         gradle wrapper
 
-    # Use assemble instead of build since build includes running tests. Tests will be run as part of
-    # the test workflow.
-    - name: Assemble app
+    - name: Test Android
       working-directory: ./android_driverapp_samples
-      run: ./gradlew assemble
+      run: ./gradlew test
+
+    - name: Generate backend gradle wrapper
+      working-directory: ./backend
+      run: |
+        gradle wrapper
+
+    # Test credentials were never set up. So, we can't run tests, but we can make sure it compiles.
+    - name: Compile backend tests (no test execution)
+      working-directory: ./backend
+      run: ./gradlew testClasses

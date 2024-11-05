@@ -43,6 +43,8 @@ jobs:
       run: |
         gradle wrapper
 
-    - name: Build backend
+    # Use assemble instead of build since build includes running tests. Tests will be included as
+    # part of the test workflow (at this point test compilation only due to credential issues).
+    - name: Assemble backend
       working-directory: ./backend
-      run: ./gradlew build
+      run: ./gradlew assemble

@@ -18,7 +18,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
-import google.maps.fleetengine.delivery.v1.DeliveryVehicle;
+import com.google.maps.fleetengine.delivery.v1.DeliveryVehicle;
 import java.lang.reflect.Type;
 
 /** Class to provide serialization for DeliveryVehicle protos into JSON. */
