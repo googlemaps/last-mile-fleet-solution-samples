@@ -21,16 +21,9 @@ buildscript {    // Configuration for building
   }
 }
 
-plugins {
-  id 'com.google.cloud.artifactregistry.gradle-plugin' version '2.1.5'
-}
-
 repositories {   // repositories for Jar's you access in your code
   maven {
     url 'https://oss.sonatype.org/content/repositories/snapshots' // SNAPSHOT repository (if needed)
-  }
-  maven {
-    url 'artifactregistry://us-maven.pkg.dev/fleetengine-gapic/maven'
   }
   mavenCentral()
 }
@@ -49,7 +42,7 @@ dependencies {
   implementation 'jstl:jstl:1.2'
 
   // Add dependencies here
-  implementation 'com.google.maps:grpc-google-maps-fleetengine-delivery-v1-java:latest.release'
+  implementation 'com.google.maps.api.grpc:grpc-google-maps-fleetengine-delivery-v1:0.1.0'
 
   // Fleet Engine Auth Library and its dependencies
   implementation 'com.google.maps:fleetengine-auth:2.0.0'
@@ -61,7 +54,7 @@ dependencies {
   implementation 'com.google.inject.extensions:guice-servlet:6.0.0'
   implementation 'com.google.code.gson:gson:2.10.1'
   implementation 'com.google.auto.value:auto-value-annotations:1.10.4'
- implementation 'io.grpc:grpc-api:1.66.0'
+  implementation 'io.grpc:grpc-api:1.66.0'
   implementation 'io.grpc:grpc-protobuf:1.66.0'
   implementation 'io.grpc:grpc-stub:1.66.0'
   implementation 'io.grpc:grpc-netty:1.66.0'
