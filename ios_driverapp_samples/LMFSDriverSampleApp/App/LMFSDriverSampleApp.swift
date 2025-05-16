@@ -12,8 +12,8 @@
  * permissions and limitations under the License.
  */
 
-import SwiftUI
 import GoogleMaps
+import SwiftUI
 
 /// Possible configuration errors for the iOS Sample app.
 enum ConfigurationError: Error {
@@ -28,11 +28,10 @@ struct LMFSDriverSampleApp: App {
     let apiKey = ApplicationDefaults.apiKey.value
     guard apiKey.range(of: "^AIza[0-9A-Za-z-_]{35}$", options: .regularExpression) != nil else {
       return .apiKeyConfigurationError(
-        "The API Key has not been correctly configured. Please set your project API key " +
-        "either in ApplicationDefaults.swift or LocalOverrides/ApplicationDefaults.json.")
+        "The API Key has not been correctly configured. Please set your project API key "
+          + "either in ApplicationDefaults.swift or LocalOverrides/ApplicationDefaults.json.")
     }
     GMSServices.provideAPIKey(apiKey)
-    GMSServices.setMetalRendererEnabled(true)
     return nil
   }()
 
